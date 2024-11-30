@@ -18,6 +18,16 @@ class BenchmarkDataset(Dataset):
         return self.data[idx]
 
 
-class SpatialCommonsenseBenchmark(BenchmarkDataset):
+class SpatialCommonsenseHeightBenchmark(BenchmarkDataset):
     def __init__(self):
         super().__init__(os.path.join(PROJECT_ROOT, 'spatial-commonsense/data/height/data.json'))
+
+
+class SpatialCommonsenseSizeBenchmark(BenchmarkDataset):
+    def __init__(self):
+        super().__init__(os.path.join(PROJECT_ROOT, 'spatial-commonsense/data/size/data.json'))
+
+
+class SpatialCommonsensePosrelBenchmark(BenchmarkDataset):
+    def __init__(self):
+        super().__init__(os.path.join(PROJECT_ROOT, 'spatial-commonsense/data/posrel/data_qa.json'))
