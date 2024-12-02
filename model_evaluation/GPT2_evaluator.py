@@ -9,11 +9,11 @@ from .model_evaluator import ModelEvaluator
 
 class GPT2Evaluator(ModelEvaluator):
     def __init__(self, benchmark):
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
         tokenizer.pad_token = tokenizer.eos_token
-        model = GPT2LMHeadModel.from_pretrained('gpt2').to(self.device)
+        model = GPT2LMHeadModel.from_pretrained('gpt2')
         super().__init__(model, benchmark)
+        self.model.to(self.device)
         self.tokenizer = tokenizer
 
 
