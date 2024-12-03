@@ -1,4 +1,5 @@
 import torch
+from PIL import Image
 from huggingface_hub import hf_hub_download
 from open_flamingo import create_model_and_transforms
 from torch.utils.data import DataLoader
@@ -34,20 +35,22 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
 
     def evaluate(self):
         count_correct = 0
+        simple_white = Image.open('simple-white.png')
+        vision_x = [self.image_processor(simple_white).unsqueeze(0)]
+        vision_x = torch.cat(vision_x, dim=0)
+        vision_x = vision_x.unsqueeze(1).unsqueeze(0)
         for batch in self.dataloader:
             for question, label in zip(batch['question'], batch['label']):
-                print("hello")
-                prompt = f"Answer this question with yes or no: {question}\nAnswer:"
+                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
                 self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
                 lang_x = self.tokenizer(
-                    [
-                        prompt],
+                    [prompt],
                     return_tensors="pt",
                 )
 
                 generated_text = self.model.generate(
-                    # vision_x=None,
+                    vision_x=vision_x,
                     lang_x=lang_x["input_ids"],
                     attention_mask=lang_x["attention_mask"],
                     max_new_tokens=20,
@@ -56,8 +59,6 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
 
                 # Decode the generated output
                 generated_text = self.tokenizer.decode(generated_text[0])
-                print(generated_text)
-                break
 
                 # Extract the answer from the generated text
                 answer = generated_text[len(prompt):].strip().lower()
@@ -68,6 +69,8 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                     predicted_label = False
                 elif "yes" in answer:
                     predicted_label = True
+                # else:
+                #     TODO log somewhere
 
                 correct_label = label == 0
 

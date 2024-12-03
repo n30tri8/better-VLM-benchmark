@@ -23,6 +23,5 @@ if __name__ == "__main__":
     flamingo_evaluator_height_commonsense = FlamingoEvaluatorOnHeightCommonsense()
     results_height_flamingo = flamingo_evaluator_height_commonsense.evaluate()
     print(f"Accuracy on height commonsense: {results_height_flamingo}")
-#     TODO i modified src/factory in open_flamingo. how to replicate this in another environment?
 
 
