@@ -1,4 +1,3 @@
-import torch
 from torch.utils.data import DataLoader
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
@@ -54,11 +53,17 @@ class GPT2EvaluatorOnHeightCommonsense(GPT2Evaluator):
                     predicted_label = False
                 elif "yes" in answer:
                     predicted_label = True
+                else:
+                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
                 correct_label = label == 0
 
                 count_correct += (1 if predicted_label == correct_label else 0)
-        return count_correct / len(self.dataloader)
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader)
+        self.write_log()
+
+        return self.benchmark_log
 
 
 class GPT2EvaluatorOnSizeCommonsense(GPT2Evaluator):
@@ -98,11 +103,17 @@ class GPT2EvaluatorOnSizeCommonsense(GPT2Evaluator):
                     predicted_label = False
                 elif "yes" in answer:
                     predicted_label = True
+                else:
+                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
                 correct_label = label == 0
 
                 count_correct += (1 if predicted_label == correct_label else 0)
-        return count_correct / len(self.dataloader)
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader)
+        self.write_log()
+
+        return self.benchmark_log
 
 
 class GPT2EvaluatorOnPosrelCommonsense(GPT2Evaluator):
@@ -142,8 +153,14 @@ class GPT2EvaluatorOnPosrelCommonsense(GPT2Evaluator):
                     predicted_label = False
                 elif "yes" in answer:
                     predicted_label = True
+                else:
+                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
                 correct_label = label == 0
 
                 count_correct += (1 if predicted_label == correct_label else 0)
-        return count_correct / len(self.dataloader)
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader)
+        self.write_log()
+
+        return self.benchmark_log

@@ -79,4 +79,4 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
         self.benchmark_log["total"] = len(self.dataloader)
         self.write_log()
 
-        return
+        return self.benchmark_log
