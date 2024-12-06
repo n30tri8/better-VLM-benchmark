@@ -78,9 +78,8 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                 correct_label = False if label == 0 else True
 
                 count_correct += (1 if predicted_label == correct_label else 0)
-            break
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log
@@ -131,7 +130,7 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log
@@ -182,7 +181,7 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log

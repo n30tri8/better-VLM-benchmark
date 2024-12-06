@@ -60,7 +60,7 @@ class GPT2EvaluatorOnHeightCommonsense(GPT2Evaluator):
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log
@@ -110,7 +110,7 @@ class GPT2EvaluatorOnSizeCommonsense(GPT2Evaluator):
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log
@@ -160,7 +160,7 @@ class GPT2EvaluatorOnPosrelCommonsense(GPT2Evaluator):
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader)
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
 
         return self.benchmark_log
