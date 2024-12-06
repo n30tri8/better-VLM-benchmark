@@ -4,7 +4,8 @@ from huggingface_hub import hf_hub_download
 from open_flamingo import create_model_and_transforms
 from torch.utils.data import DataLoader
 
-from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark
+from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
+    SpatialCommonsensePosrelBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -26,6 +27,11 @@ class FlamingoEvaluator(ModelEvaluator):
         self.image_processor = image_processor
         self.tokenizer = tokenizer
 
+        simple_white_image = Image.open('misc/simple-white.png')
+        vision_x = [self.image_processor(simple_white_image).unsqueeze(0)]
+        vision_x = torch.cat(vision_x, dim=0)
+        self.vision_x = vision_x.unsqueeze(1).unsqueeze(0)
+
 
 class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
     def __init__(self):
@@ -35,10 +41,7 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
 
     def evaluate(self):
         count_correct = 0
-        simple_white = Image.open('simple-white.png')
-        vision_x = [self.image_processor(simple_white).unsqueeze(0)]
-        vision_x = torch.cat(vision_x, dim=0)
-        vision_x = vision_x.unsqueeze(1).unsqueeze(0)
+
         for batch in self.dataloader:
             for question, label in zip(batch['question'], batch['label']):
                 prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
@@ -50,7 +53,7 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                 )
 
                 generated_text = self.model.generate(
-                    vision_x=vision_x,
+                    vision_x=self.vision_x,
                     lang_x=lang_x["input_ids"],
                     attention_mask=lang_x["attention_mask"],
                     max_new_tokens=20,
@@ -72,7 +75,110 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                 else:
                     self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                correct_label = label == 0
+                correct_label = False if label == 0 else True
+
+                count_correct += (1 if predicted_label == correct_label else 0)
+            break
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader)
+        self.write_log()
+
+        return self.benchmark_log
+
+
+class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
+    def __init__(self):
+        benchmark = SpatialCommonsenseSizeBenchmark()
+        super().__init__(benchmark)
+        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
+
+    def evaluate(self):
+        count_correct = 0
+        for batch in self.dataloader:
+            for question, label in zip(batch['question'], batch['label']):
+                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+
+                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+                lang_x = self.tokenizer(
+                    [prompt],
+                    return_tensors="pt",
+                )
+
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
+                )
+
+                # Decode the generated output
+                generated_text = self.tokenizer.decode(generated_text[0])
+
+                # Extract the answer from the generated text
+                answer = generated_text[len(prompt):].strip().lower()
+
+                # Implement specific evaluation logic here
+                predicted_label = None
+                if "no" in answer:
+                    predicted_label = False
+                elif "yes" in answer:
+                    predicted_label = True
+                else:
+                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
+
+                correct_label = False if label == 0 else True
+
+                count_correct += (1 if predicted_label == correct_label else 0)
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader)
+        self.write_log()
+
+        return self.benchmark_log
+
+
+class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
+    def __init__(self):
+        benchmark = SpatialCommonsensePosrelBenchmark()
+        super().__init__(benchmark)
+        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
+
+    def evaluate(self):
+        count_correct = 0
+        for batch in self.dataloader:
+            for question, label in zip(batch['question'], batch['label']):
+                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+
+                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+                lang_x = self.tokenizer(
+                    [prompt],
+                    return_tensors="pt",
+                )
+
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
+                )
+
+                # Decode the generated output
+                generated_text = self.tokenizer.decode(generated_text[0])
+
+                # Extract the answer from the generated text
+                answer = generated_text[len(prompt):].strip().lower()
+
+                # Implement specific evaluation logic here
+                predicted_label = None
+                if "no" in answer:
+                    predicted_label = False
+                elif "yes" in answer:
+                    predicted_label = True
+                else:
+                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
+
+                correct_label = False if label == 0 else True
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct

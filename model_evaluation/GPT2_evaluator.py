@@ -56,7 +56,7 @@ class GPT2EvaluatorOnHeightCommonsense(GPT2Evaluator):
                 else:
                     self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                correct_label = label == 0
+                correct_label = False if label == 0 else True
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
@@ -106,7 +106,7 @@ class GPT2EvaluatorOnSizeCommonsense(GPT2Evaluator):
                 else:
                     self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                correct_label = label == 0
+                correct_label = False if label == 0 else True
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
@@ -156,7 +156,7 @@ class GPT2EvaluatorOnPosrelCommonsense(GPT2Evaluator):
                 else:
                     self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                correct_label = label == 0
+                correct_label = False if label == 0 else True
 
                 count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
