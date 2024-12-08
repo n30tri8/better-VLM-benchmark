@@ -1,6 +1,7 @@
 from benckmarks.benchmark import ShapeVLCommonsenseBenchmark
 from model_evaluation.Flamingo_evaluator import FlamingoEvaluatorOnHeightCommonsense, \
     FlamingoEvaluatorOnSizeCommonsense, FlamingoEvaluatorOnPosrelCommonsense
+from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator
 
 if __name__ == "__main__":
     # gpt2_evaluator_height_commonsense = GPT2EvaluatorOnHeightCommonsense()
@@ -38,5 +39,7 @@ if __name__ == "__main__":
     # print(f"Flamingo::Accuracy on posrel commonsense:")
     # print(results_posrel_flamingo)
 
-    d = ShapeVLCommonsenseBenchmark()
-    print(d[0])
+    gpt2_vlcommonsense_shape_evaluator = GPT2VLCommonsenseShapeEvaluator()
+    results_shape_gpt2 = gpt2_vlcommonsense_shape_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense shape:")
+    print(results_shape_gpt2)

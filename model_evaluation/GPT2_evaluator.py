@@ -1,8 +1,10 @@
+import string
+
 from torch.utils.data import DataLoader
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
-    SpatialCommonsensePosrelBenchmark
+    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -164,3 +166,59 @@ class GPT2EvaluatorOnPosrelCommonsense(GPT2Evaluator):
         self.write_log()
 
         return self.benchmark_log
+
+
+# Evaluator for GPT-2 on VL-commonsense
+class GPT2VLCommonsenseEvaluator(GPT2Evaluator):
+    def __init__(self, benchmark, prompt):
+        super().__init__(benchmark)
+        self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
+        self.prompt = prompt
+
+    def evaluate(self):
+        count_correct = 0
+        for item in self.dataloader:
+            subject = item['sub'][0]
+            correct_obj = item['obj'][0].lower()
+
+            # Create a prompt suitable for GPT-2
+            prompt = self.prompt.format(subject=subject)
+            # Encode the prompt
+            inputs = self.tokenizer.encode(prompt, return_tensors='pt').to(self.device)
+            # Generate the model output
+            outputs = self.model.generate(
+                inputs,
+                max_length=inputs.shape[1] + 5,
+                num_return_sequences=1,
+                temperature=0.7,
+                top_k=50,
+                top_p=0.9,
+                eos_token_id=self.tokenizer.eos_token_id
+            )
+            # Decode the generated text
+            generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+            # Extract the predicted object
+            predicted_text = generated_text[len(prompt):].strip()
+            # Remove punctuation from the predicted text
+            predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
+            # Get the first word as the predicted shape
+            predicted_obj = predicted_text.split()[0].lower()
+            # Standardize the predicted object
+            predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)
+            # Compare the standardized predicted object with the standardized correct object
+            if predicted_obj == correct_obj:
+                count_correct += 1
+
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
+        self.write_log()
+
+        return self.benchmark_log
+
+
+class GPT2VLCommonsenseShapeEvaluator(GPT2VLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = ShapeVLCommonsenseBenchmark()
+        # prompt = "What is the shape of {subject}? The shape of {subject} is"
+        prompt = "In one word, the typical shape of a {subject} is a"
+        super().__init__(benchmark, prompt)

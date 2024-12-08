@@ -34,11 +34,10 @@ class SpatialCommonsensePosrelBenchmark(BenchmarkDataset):
 
 
 class VLCommonsenseBenchmarkDataset(Dataset):
-    def __init__(self, distribution_file, shape_words_file):
-        json_data = json.load(open(distribution_file, 'r'))
-        self.data = [json_data[key] for key in json_data]
-
-        self.standard_mapping = self.build_standard_mapping(shape_words_file)
+    def __init__(self, dataset_file, standard_words_file):
+        with open(dataset_file, 'r') as f:
+            self.data = [json.loads(line) for line in f]
+        self.standard_mapping = self.build_standard_mapping(standard_words_file)
 
     def __len__(self):
         return len(self.data)
@@ -71,6 +70,6 @@ class VLCommonsenseBenchmarkDataset(Dataset):
 
 class ShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/distributions/shape-dist.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/shape/train.jsonl')
         shape_words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
         super().__init__(distribution_file, shape_words_file)
