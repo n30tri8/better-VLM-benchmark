@@ -31,3 +31,46 @@ class SpatialCommonsenseSizeBenchmark(BenchmarkDataset):
 class SpatialCommonsensePosrelBenchmark(BenchmarkDataset):
     def __init__(self):
         super().__init__(os.path.join(PROJECT_ROOT, 'spatial-commonsense/data/posrel/data_qa.json'))
+
+
+class VLCommonsenseBenchmarkDataset(Dataset):
+    def __init__(self, distribution_file, shape_words_file):
+        json_data = json.load(open(distribution_file, 'r'))
+        self.data = [json_data[key] for key in json_data]
+
+        self.standard_mapping = self.build_standard_mapping(shape_words_file)
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+
+    def build_standard_mapping(self, shape_words_file):
+        # Build shape mapping
+        standard_mapping = {}
+        with open(shape_words_file, 'r') as f:
+            for line in f:
+                line = line.strip().lower()
+                if not line or line.startswith('#'):
+                    continue  # Skip empty or commented lines
+                if ':' in line:
+                    variants_part, standard = line.split(':')
+                    variants = [v.strip() for v in variants_part.strip().split(',')]
+                    standard = standard.strip()
+                    for variant in variants:
+                        if variant:
+                            standard_mapping[variant] = standard
+                else:
+                    word = line.strip()
+                    if word:
+                        standard_mapping[word] = word  # Map to itself
+
+        return standard_mapping
+
+
+class ShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/distributions/shape-dist.jsonl')
+        shape_words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
+        super().__init__(distribution_file, shape_words_file)
