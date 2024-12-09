@@ -1,7 +1,5 @@
-from benckmarks.benchmark import ShapeVLCommonsenseBenchmark
-from model_evaluation.Flamingo_evaluator import FlamingoEvaluatorOnHeightCommonsense, \
-    FlamingoEvaluatorOnSizeCommonsense, FlamingoEvaluatorOnPosrelCommonsense
-from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator
+from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT2VLCommonsenseColorEvaluator, \
+    GPT2VLCommonsenseMaterialEvaluator
 
 if __name__ == "__main__":
     # gpt2_evaluator_height_commonsense = GPT2EvaluatorOnHeightCommonsense()
@@ -43,3 +41,15 @@ if __name__ == "__main__":
     results_shape_gpt2 = gpt2_vlcommonsense_shape_evaluator.evaluate()
     print(f"GPT2::Accuracy on VL-commonsense shape:")
     print(results_shape_gpt2)
+
+    # Add VL-commonsense color benchmark
+    gpt2_vlcommonsense_color_evaluator = GPT2VLCommonsenseColorEvaluator()
+    results_color_gpt2 = gpt2_vlcommonsense_color_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense color:")
+    print(results_color_gpt2)
+
+    # Add VL-commonsense material benchmark
+    gpt2_vlcommonsense_material_evaluator = GPT2VLCommonsenseMaterialEvaluator()
+    results_material_gpt2 = gpt2_vlcommonsense_material_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense material:")
+    print(results_material_gpt2)
