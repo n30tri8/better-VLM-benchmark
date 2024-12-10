@@ -220,7 +220,6 @@ class GPT2VLCommonsenseEvaluator(GPT2Evaluator):
 class GPT2VLCommonsenseShapeEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ShapeVLCommonsenseBenchmark()
-        # prompt = "What is the shape of {subject}? The shape of {subject} is"
         prompt = "In one word, the typical shape of a {subject} is a"
         super().__init__(benchmark, prompt)
 
@@ -228,7 +227,6 @@ class GPT2VLCommonsenseShapeEvaluator(GPT2VLCommonsenseEvaluator):
 class GPT2VLCommonsenseMaterialEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = MaterialVLCommonsenseBenchmark()
-        # prompt = "What is the shape of {subject}? The shape of {subject} is"
         prompt = "In one word, the typical material of a {subject} is"
         super().__init__(benchmark, prompt)
 
@@ -236,6 +234,5 @@ class GPT2VLCommonsenseMaterialEvaluator(GPT2VLCommonsenseEvaluator):
 class GPT2VLCommonsenseColorEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ColorVLCommonsenseBenchmark()
-        # prompt = "What is the shape of {subject}? The shape of {subject} is"
         prompt = "In one word, the typical color of a {subject} is"
         super().__init__(benchmark, prompt)
