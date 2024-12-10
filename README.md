@@ -28,6 +28,7 @@ The project is organized into the following main components:
 **implementation decisions:**
 - i used a simple white image for prompting flamingo model as a dummy input since it probably requires an image input
 - a challenge is deciding how to prompt the models to get the best results
+    - try it this link and see the difficulty: https://huggingface.co/openai-community/gpt2?text=the+typical+color+of+rice+is
 
 
 ## TODO List
