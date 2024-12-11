@@ -1,5 +1,5 @@
 from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT2VLCommonsenseColorEvaluator, \
-    GPT2VLCommonsenseMaterialEvaluator
+    GPT2VLCommonsenseMaterialEvaluator, GPT2VLCommonsenseSizeLargerEvaluator, GPT2VLCommonsenseSizeSmallerEvaluator
 
 if __name__ == "__main__":
     # gpt2_evaluator_height_commonsense = GPT2EvaluatorOnHeightCommonsense()
@@ -37,11 +37,11 @@ if __name__ == "__main__":
     # print(f"Flamingo::Accuracy on posrel commonsense:")
     # print(results_posrel_flamingo)
 
-    gpt2_vlcommonsense_shape_evaluator = GPT2VLCommonsenseShapeEvaluator()
-    results_shape_gpt2 = gpt2_vlcommonsense_shape_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense shape:")
-    print(results_shape_gpt2)
-
+    # gpt2_vlcommonsense_shape_evaluator = GPT2VLCommonsenseShapeEvaluator()
+    # results_shape_gpt2 = gpt2_vlcommonsense_shape_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense shape:")
+    # print(results_shape_gpt2)
+    #
     # # Add VL-commonsense color benchmark
     # gpt2_vlcommonsense_color_evaluator = GPT2VLCommonsenseColorEvaluator()
     # results_color_gpt2 = gpt2_vlcommonsense_color_evaluator.evaluate()
@@ -53,3 +53,15 @@ if __name__ == "__main__":
     # results_material_gpt2 = gpt2_vlcommonsense_material_evaluator.evaluate()
     # print(f"GPT2::Accuracy on VL-commonsense material:")
     # print(results_material_gpt2)
+
+    # Add VL-commonsense size larger benchmark
+    gpt2_vlcommonsense_size_larger_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
+    results_size_larger_gpt2 = gpt2_vlcommonsense_size_larger_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense size larger:")
+    print(results_size_larger_gpt2)
+
+    # Add VL-commonsense size smaller benchmark
+    gpt2_vlcommonsense_size_smaller_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
+    results_size_smaller_gpt2 = gpt2_vlcommonsense_size_smaller_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense size smaller:")
+    print(results_size_smaller_gpt2)

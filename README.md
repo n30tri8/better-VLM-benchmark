@@ -35,6 +35,7 @@ The project is organized into the following main components:
 ## TODO List
 
 - [ ] Implement evaluation based on model size
+- [ ] add evaluation on wiki-{color, shep, material}
 - [ ] Debug and investigate low accuracy issues
   - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
