@@ -34,8 +34,10 @@ The project is organized into the following main components:
 
 ## TODO List
 
-- [ ] Implement evaluation based on model size
-- [ ] add evaluation on wiki-{color, shep, material}
+- [x] Implement evaluation based on model size
+- [ ] implement evaluation on CLIP model
+- [ ] implement evaluation on GIT model
+- [ ] add evaluation on wiki-{color, shep, material}; in case other results are not proving anything
 - [ ] Debug and investigate low accuracy issues
   - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
