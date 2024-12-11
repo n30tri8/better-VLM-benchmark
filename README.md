@@ -29,12 +29,13 @@ The project is organized into the following main components:
 - i used a simple white image for prompting flamingo model as a dummy input since it probably requires an image input
 - a challenge is deciding how to prompt the models to get the best results
     - try it this link and see the difficulty: https://huggingface.co/openai-community/gpt2?text=the+typical+color+of+rice+is
+- used _single_ db benchmark for better top-1 accuracy
 
 
 ## TODO List
 
 - [ ] Implement evaluation based on model size
 - [ ] Debug and investigate low accuracy issues
-  - Compare current results with accuracies reported in the original paper
+  - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
 - [ ] Complete benchmark runs and generate final report

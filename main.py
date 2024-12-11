@@ -42,14 +42,14 @@ if __name__ == "__main__":
     print(f"GPT2::Accuracy on VL-commonsense shape:")
     print(results_shape_gpt2)
 
-    # Add VL-commonsense color benchmark
-    gpt2_vlcommonsense_color_evaluator = GPT2VLCommonsenseColorEvaluator()
-    results_color_gpt2 = gpt2_vlcommonsense_color_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense color:")
-    print(results_color_gpt2)
-
-    # Add VL-commonsense material benchmark
-    gpt2_vlcommonsense_material_evaluator = GPT2VLCommonsenseMaterialEvaluator()
-    results_material_gpt2 = gpt2_vlcommonsense_material_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense material:")
-    print(results_material_gpt2)
+    # # Add VL-commonsense color benchmark
+    # gpt2_vlcommonsense_color_evaluator = GPT2VLCommonsenseColorEvaluator()
+    # results_color_gpt2 = gpt2_vlcommonsense_color_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense color:")
+    # print(results_color_gpt2)
+    #
+    # # Add VL-commonsense material benchmark
+    # gpt2_vlcommonsense_material_evaluator = GPT2VLCommonsenseMaterialEvaluator()
+    # results_material_gpt2 = gpt2_vlcommonsense_material_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense material:")
+    # print(results_material_gpt2)

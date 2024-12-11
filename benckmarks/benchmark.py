@@ -70,20 +70,20 @@ class VLCommonsenseBenchmarkDataset(Dataset):
 
 class ShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/shape/train.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/shape/single/train.jsonl')
         words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
         super().__init__(distribution_file, words_file)
 
 
 class MaterialVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/material/train.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/material/single/train.jsonl')
         words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/material-words.txt')
         super().__init__(distribution_file, words_file)
 
 
 class ColorVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/color/train.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/color/single/train.jsonl')
         words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/color-words.txt')
         super().__init__(distribution_file, words_file)
