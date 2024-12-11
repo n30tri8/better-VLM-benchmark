@@ -5,7 +5,8 @@ from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
     SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
-    ColorVLCommonsenseBenchmark
+    ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
+    WikiColorVLCommonsenseBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -342,3 +343,24 @@ class GPT2VLCommonsenseSizeSmallerEvaluator(GPT2VLCommonsenseEvaluator):
         self.write_log()
 
         return self.benchmark_log
+
+
+class GPT2VLCommonsenseWikiShapeEvaluator(GPT2VLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiShapeVLCommonsenseBenchmark()
+        prompt = "In one word, the typical shape of a {subject} is a"
+        super().__init__(benchmark, prompt)
+
+
+class GPT2VLCommonsenseWikiMaterialEvaluator(GPT2VLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiMaterialVLCommonsenseBenchmark()
+        prompt = "In one word, the typical material of a {subject} is"
+        super().__init__(benchmark, prompt)
+
+
+class GPT2VLCommonsenseWikiColorEvaluator(GPT2VLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiColorVLCommonsenseBenchmark()
+        prompt = "In one word, the typical color of a {subject} is"
+        super().__init__(benchmark, prompt)

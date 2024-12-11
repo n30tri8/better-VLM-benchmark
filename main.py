@@ -1,5 +1,6 @@
 from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT2VLCommonsenseColorEvaluator, \
-    GPT2VLCommonsenseMaterialEvaluator, GPT2VLCommonsenseSizeLargerEvaluator, GPT2VLCommonsenseSizeSmallerEvaluator
+    GPT2VLCommonsenseMaterialEvaluator, GPT2VLCommonsenseSizeLargerEvaluator, GPT2VLCommonsenseSizeSmallerEvaluator, \
+    GPT2VLCommonsenseWikiMaterialEvaluator, GPT2VLCommonsenseWikiColorEvaluator, GPT2VLCommonsenseWikiShapeEvaluator
 
 if __name__ == "__main__":
     # gpt2_evaluator_height_commonsense = GPT2EvaluatorOnHeightCommonsense()
@@ -53,6 +54,23 @@ if __name__ == "__main__":
     # results_material_gpt2 = gpt2_vlcommonsense_material_evaluator.evaluate()
     # print(f"GPT2::Accuracy on VL-commonsense material:")
     # print(results_material_gpt2)
+
+    gpt2_vlcommonsense_wiki_shape_evaluator = GPT2VLCommonsenseWikiShapeEvaluator()
+    results_wiki_shape_gpt2 = gpt2_vlcommonsense_wiki_shape_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense wiki shape:")
+    print(results_wiki_shape_gpt2)
+
+    # Add VL-commonsense color benchmark
+    gpt2_vlcommonsense_wiki_color_evaluator = GPT2VLCommonsenseWikiColorEvaluator()
+    results_wiki_color_gpt2 = gpt2_vlcommonsense_wiki_color_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense wiki color:")
+    print(results_wiki_color_gpt2)
+
+    # Add VL-commonsense material benchmark
+    gpt2_vlcommonsense_wiki_material_evaluator = GPT2VLCommonsenseWikiMaterialEvaluator()
+    results_wiki_material_gpt2 = gpt2_vlcommonsense_wiki_material_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense wiki material:")
+    print(results_wiki_material_gpt2)
 
     # Add VL-commonsense size larger benchmark
     gpt2_vlcommonsense_size_larger_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()

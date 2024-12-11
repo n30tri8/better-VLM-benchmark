@@ -99,3 +99,24 @@ class SizeSmallerVLCommonsenseBenchmark(BenchmarkDataset):
     def __init__(self):
         distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/size_smaller/train.jsonl')
         super().__init__(distribution_file)
+
+
+class WikiShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-shape/single/train.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class WikiMaterialVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-material/single/train.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/material-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class WikiColorVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-color/single/train.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/color-words.txt')
+        super().__init__(distribution_file, words_file)
