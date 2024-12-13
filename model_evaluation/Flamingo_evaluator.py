@@ -1,3 +1,5 @@
+import string
+
 import torch
 from PIL import Image
 from huggingface_hub import hf_hub_download
@@ -5,7 +7,9 @@ from open_flamingo import create_model_and_transforms
 from torch.utils.data import DataLoader
 
 from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
-    SpatialCommonsensePosrelBenchmark
+    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
+    ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
+    WikiColorVLCommonsenseBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -185,3 +189,95 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
         self.write_log()
 
         return self.benchmark_log
+
+
+class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
+    def __init__(self, benchmark, prompt):
+        super().__init__(benchmark)
+        self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
+        self.prompt = "<image>ignore the content of image for answering<|endofchunk|>" + prompt
+
+    def evaluate(self):
+        count_correct = 0
+        for item in self.dataloader:
+            subject = item['sub'][0]
+            correct_obj = item['obj'][0].lower()
+
+            # Create a prompt suitable for GPT-2
+            prompt = self.prompt.format(subject=subject)
+            # Encode the prompt
+            self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+            lang_x = self.tokenizer(
+                [prompt],
+                return_tensors="pt",
+            )
+
+            generated_text = self.model.generate(
+                vision_x=self.vision_x,
+                lang_x=lang_x["input_ids"],
+                attention_mask=lang_x["attention_mask"],
+                max_new_tokens=20,
+                num_beams=3,
+            )
+
+            # Decode the generated text
+            generated_text = self.tokenizer.decode(generated_text[0], skip_special_tokens=True)
+            # Extract the predicted object
+            predicted_text = generated_text[len(prompt):].strip().lower()
+            # Remove punctuation from the predicted text
+            predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
+            # Get the first word as the predicted shape
+            predicted_obj = predicted_text.split()[0].lower()
+            # Standardize the predicted object
+            predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)
+            # Compare the standardized predicted object with the standardized correct object
+            if predicted_obj == correct_obj:
+                count_correct += 1
+
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.dataloader.dataset)
+        self.write_log()
+
+        return self.benchmark_log
+
+
+class FlamingoVLCommonsenseShapeEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = ShapeVLCommonsenseBenchmark()
+        prompt = "In one word, the typical shape of a {subject} is a"
+        super().__init__(benchmark, prompt)
+
+
+class FlamingoVLCommonsenseMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = MaterialVLCommonsenseBenchmark()
+        prompt = "In one word, the typical material of a {subject} is"
+        super().__init__(benchmark, prompt)
+
+
+class FlamingoVLCommonsenseColorEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = ColorVLCommonsenseBenchmark()
+        prompt = "In one word, the typical color of a {subject} is"
+        super().__init__(benchmark, prompt)
+
+
+class FlamingoVLCommonsenseWikiShapeEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiShapeVLCommonsenseBenchmark()
+        prompt = "In one word, the typical shape of a {subject} is a"
+        super().__init__(benchmark, prompt)
+
+
+class FlamingoVLCommonsenseWikiMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiMaterialVLCommonsenseBenchmark()
+        prompt = "In one word, the typical material of a {subject} is"
+        super().__init__(benchmark, prompt)
+
+
+class FlamingoVLCommonsenseWikiColorEvaluator(FlamingoVLCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = WikiColorVLCommonsenseBenchmark()
+        prompt = "In one word, the typical color of a {subject} is"
+        super().__init__(benchmark, prompt)
