@@ -1,5 +1,6 @@
 from model_evaluation.CLIP_evaluator import CLIPVLCommonsenseShapeEvaluator, CLIPVLCommonsenseColorEvaluator, \
-    CLIPVLCommonsenseMaterialEvaluator
+    CLIPVLCommonsenseMaterialEvaluator, CLIPVLCommonsenseWikiShapeEvaluator, CLIPVLCommonsenseWikiColorEvaluator, \
+    CLIPVLCommonsenseWikiMaterialEvaluator, CLIPVLCommonsenseSizeSmallerEvaluator, CLIPVLCommonsenseSizeLargerEvaluator
 from model_evaluation.Flamingo_evaluator import FlamingoEvaluatorOnHeightCommonsense, \
     FlamingoEvaluatorOnSizeCommonsense, FlamingoVLCommonsenseColorEvaluator, FlamingoVLCommonsenseMaterialEvaluator, \
     FlamingoVLCommonsenseWikiShapeEvaluator, FlamingoVLCommonsenseWikiColorEvaluator, \
@@ -152,6 +153,36 @@ if __name__ == "__main__":
     results_material_clip = clip_vlcommonsense_material_evaluator.evaluate()
     print(f"CLIP::Accuracy on VL-commonsense material:")
     print(results_material_clip)
+
+    # VL-commonsense wiki shape benchmark
+    clip_vlcommonsense_wiki_shape_evaluator = CLIPVLCommonsenseWikiShapeEvaluator()
+    results_wiki_shape_clip = clip_vlcommonsense_wiki_shape_evaluator.evaluate()
+    print(f"CLIP::Accuracy on VL-commonsense wiki shape:")
+    print(results_wiki_shape_clip)
+
+    # VL-commonsense wiki color benchmark
+    clip_vlcommonsense_wiki_color_evaluator = CLIPVLCommonsenseWikiColorEvaluator()
+    results_wiki_color_clip = clip_vlcommonsense_wiki_color_evaluator.evaluate()
+    print(f"CLIP::Accuracy on VL-commonsense wiki color:")
+    print(results_wiki_color_clip)
+
+    # VL-commonsense wiki material benchmark
+    clip_vlcommonsense_wiki_material_evaluator = CLIPVLCommonsenseWikiMaterialEvaluator()
+    results_wiki_material_clip = clip_vlcommonsense_wiki_material_evaluator.evaluate()
+    print(f"CLIP::Accuracy on VL-commonsense wiki material:")
+    print(results_wiki_material_clip)
+
+    # VL-commonsense size smaller benchmark
+    clip_vlcommonsense_size_smaller_evaluator = CLIPVLCommonsenseSizeSmallerEvaluator()
+    results_size_smaller_clip = clip_vlcommonsense_size_smaller_evaluator.evaluate()
+    print(f"CLIP::Accuracy on VL-commonsense size smaller:")
+    print(results_size_smaller_clip)
+
+    # VL-commonsense size larger benchmark
+    clip_vlcommonsense_size_larger_evaluator = CLIPVLCommonsenseSizeLargerEvaluator()
+    results_size_larger_clip = clip_vlcommonsense_size_larger_evaluator.evaluate()
+    print(f"CLIP::Accuracy on VL-commonsense size larger:")
+    print(results_size_larger_clip)
 
 
 

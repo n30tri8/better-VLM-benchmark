@@ -8,7 +8,9 @@ from benckmarks.benchmark import SpatialCommonsenseSizeBenchmark, \
     SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
     ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
     WikiColorVLCommonsenseBenchmark, ShapeVLCommonsenseTestBenchmark, ColorVLCommonsenseTestBenchmark, \
-    MaterialVLCommonsenseTestBenchmark
+    MaterialVLCommonsenseTestBenchmark, WikiShapeVLCommonsenseTestBenchmark, WikiMaterialVLCommonsenseTestBenchmark, \
+    WikiColorVLCommonsenseTestBenchmark, SizeLargerVLCommonsenseBenchmark, SizeLargerVLCommonsenseTestBenchmark, \
+    SizeSmallerVLCommonsenseBenchmark, SizeSmallerVLCommonsenseTestBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -78,7 +80,8 @@ class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
             test_labels = test_all_temps[i][1]
 
             # Perform logistic regression
-            classifier = LogisticRegression(random_state=0, C=0.316, max_iter=2000, verbose=0)
+            classifier = LogisticRegression(random_state=0, penalty='l1', C=0.0001, max_iter=500, solver='saga',
+                                            verbose=0)
             classifier.fit(train_features, train_labels)
 
             # Evaluate using the logistic regression classifier
@@ -104,6 +107,20 @@ class CLIPVLCommonsenseShapeEvaluator(CLIPVLCommonsenseEvaluator):
                                  "This is a [obj] {subject} .", ]
 
 
+class CLIPVLCommonsenseWikiShapeEvaluator(CLIPVLCommonsenseEvaluator):
+    def __init__(self):
+        train_dataset = WikiShapeVLCommonsenseBenchmark()
+        test_dataset = WikiShapeVLCommonsenseTestBenchmark()
+        super().__init__(train_dataset, test_dataset)
+        self.prompt_templates = ["{subject} can be of shape [obj] .",
+                                 "{subject} has shape [obj] .",
+                                 "{subject} is of shape [obj] .",
+                                 "The shape of {subject} can be [obj] .",
+                                 "The shape of the {subject} is [obj] .",
+                                 "[obj] {subject} .",
+                                 "This is a [obj] {subject} .", ]
+
+
 class CLIPVLCommonsenseColorEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
         train_dataset = ColorVLCommonsenseBenchmark()
@@ -112,6 +129,20 @@ class CLIPVLCommonsenseColorEvaluator(CLIPVLCommonsenseEvaluator):
         self.prompt_templates = ["{subject} can be of color [obj] .", "{subject} has color [obj] .",
                                  "The color of {subject} can be [obj] .", "The color of the {subject} is [obj] .",
                                  "[obj] {subject} .", "This is a [obj] {subject} .", "{subject} is of color [obj] ."]
+
+
+class CLIPVLCommonsenseWikiColorEvaluator(CLIPVLCommonsenseEvaluator):
+    def __init__(self):
+        train_dataset = WikiColorVLCommonsenseBenchmark()
+        test_dataset = WikiColorVLCommonsenseTestBenchmark()
+        super().__init__(train_dataset, test_dataset)
+        self.prompt_templates = ["{subject} can be of color [obj] .",
+                                 "{subject} has color [obj] .",
+                                 "{subject} is of color [obj] .",
+                                 "The color of {subject} can be [obj] .",
+                                 "The color of the {subject} is [obj] .",
+                                 "[obj] {subject} .",
+                                 "This is a [obj] {subject} .", ]
 
 
 class CLIPVLCommonsenseMaterialEvaluator(CLIPVLCommonsenseEvaluator):
@@ -126,6 +157,50 @@ class CLIPVLCommonsenseMaterialEvaluator(CLIPVLCommonsenseEvaluator):
                                  "[obj] {subject} .",
                                  "This is a [obj] {subject} .",
                                  "[obj] is used to make {subject} .", ]
+
+
+class CLIPVLCommonsenseWikiMaterialEvaluator(CLIPVLCommonsenseEvaluator):
+    def __init__(self):
+        train_dataset = WikiMaterialVLCommonsenseBenchmark()
+        test_dataset = WikiMaterialVLCommonsenseTestBenchmark()
+        super().__init__(train_dataset, test_dataset)
+        self.prompt_templates = ["{subject} is made of [obj] .",
+                                 "{subject} can be made of [obj] .",
+                                 "{subject} is made from [obj] .",
+                                 "The material of {subject} can be [obj] .",
+                                 "The material of the {subject} is [obj] .",
+                                 "[obj] {subject} .",
+                                 "This is a [obj] {subject} .", ]
+
+
+class CLIPVLCommonsenseSizeSmallerEvaluator(CLIPVLCommonsenseEvaluator):
+    def __init__(self):
+        train_dataset = SizeSmallerVLCommonsenseBenchmark()
+        test_dataset = SizeSmallerVLCommonsenseTestBenchmark()
+        super().__init__(train_dataset, test_dataset)
+        self.prompt_templates = ["{subject} is smaller than [obj] .",
+                                 "Ths size of {subject} is smaller than that of [obj] .",
+                                 "{subject} can be smaller than [obj] .",
+                                 "[obj] is larger than {subject} .",
+                                 "Ths size of [obj] is larger than that of {subject} .",
+                                 "[obj] can be larger than {subject} .",
+                                 "[obj] is bigger than {subject} .",
+                                 "{subject} is not as big as [obj] .", ]
+
+
+class CLIPVLCommonsenseSizeLargerEvaluator(CLIPVLCommonsenseEvaluator):
+    def __init__(self):
+        train_dataset = SizeLargerVLCommonsenseBenchmark()
+        test_dataset = SizeLargerVLCommonsenseTestBenchmark()
+        super().__init__(train_dataset, test_dataset)
+        self.prompt_templates = ["{subject} is larger than [obj] ."
+                                 "Ths size of {subject} is larger than that of [obj] ."
+                                 "{subject} can be larger than [obj] ."
+                                 "[obj] is smaller than {subject} ."
+                                 "Ths size of [obj] is smaller than that of {subject} ."
+                                 "[obj] can be smaller than {subject} ."
+                                 "{subject} is bigger than [obj] ."
+                                 "[obj] is not as big as {subject} ."]
 
 
 class CLIPEvaluatorOnSizeCommonsense(CLIPVLCommonsenseEvaluator):
@@ -228,95 +303,3 @@ class CLIPEvaluatorOnPosrelCommonsense(CLIPVLCommonsenseEvaluator):
         self.write_log()
 
         return self.benchmark_log
-
-
-# class CLIPVLCommonsenseEvaluator(CLIPVLCommonsenseEvaluator):
-#     def __init__(self, benchmark, prompt):
-#         super().__init__(benchmark)
-#         self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
-#         self.prompt = "<image>ignore the content of image for answering<|endofchunk|>" + prompt
-#
-#     def evaluate(self):
-#         count_correct = 0
-#         for item in self.dataloader:
-#             subject = item['sub'][0]
-#             correct_obj = item['obj'][0].lower()
-#
-#             # Create a prompt suitable for GPT-2
-#             prompt = self.prompt.format(subject=subject)
-#             # Encode the prompt
-#             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-#             lang_x = self.tokenizer(
-#                 [prompt],
-#                 return_tensors="pt",
-#             )
-#
-#             generated_text = self.model.generate(
-#                 vision_x=self.vision_x,
-#                 lang_x=lang_x["input_ids"],
-#                 attention_mask=lang_x["attention_mask"],
-#                 max_new_tokens=20,
-#                 num_beams=3,
-#             )
-#
-#             # Decode the generated text
-#             generated_text = self.tokenizer.decode(generated_text[0], skip_special_tokens=True)
-#             # Extract the predicted object
-#             predicted_text = generated_text[len(prompt):].strip().lower()
-#             # Remove punctuation from the predicted text
-#             predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
-#             # Get the first word as the predicted shape
-#             predicted_obj = predicted_text.split()[0].lower()
-#             # Standardize the predicted object
-#             predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)
-#             # Compare the standardized predicted object with the standardized correct object
-#             if predicted_obj == correct_obj:
-#                 count_correct += 1
-#
-#         self.benchmark_log["correct"] = count_correct
-#         self.benchmark_log["total"] = len(self.dataloader.dataset)
-#         self.write_log()
-#
-#         return self.benchmark_log
-
-
-class FlamingoVLCommonsenseShapeEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = ShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
-        super().__init__(benchmark, prompt)
-
-
-class FlamingoVLCommonsenseMaterialEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = MaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
-        super().__init__(benchmark, prompt)
-
-
-class FlamingoVLCommonsenseColorEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = ColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
-        super().__init__(benchmark, prompt)
-
-
-class FlamingoVLCommonsenseWikiShapeEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = WikiShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
-        super().__init__(benchmark, prompt)
-
-
-class FlamingoVLCommonsenseWikiMaterialEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = WikiMaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
-        super().__init__(benchmark, prompt)
-
-
-class FlamingoVLCommonsenseWikiColorEvaluator(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = WikiColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
-        super().__init__(benchmark, prompt)

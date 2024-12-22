@@ -37,6 +37,8 @@ The project is organized into the following main components:
 
 - [x] Implement evaluation based on model size
 - [ ] implement evaluation on CLIP model
+  - [ ] benchmarking on all datasets
+  - [ ] recheck the implementation
 - [ ] implement evaluation on GIT model
 - [ ] implement benchmarking of Flamingo on VL-commonsense- size_smaller and size_larger
 - [ ] Flamingo high latency issue
