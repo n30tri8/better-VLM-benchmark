@@ -31,10 +31,12 @@ class FlamingoEvaluator(ModelEvaluator):
         self.image_processor = image_processor
         self.tokenizer = tokenizer
 
+        model.to(self.device)
+
         simple_white_image = Image.open('misc/simple-white.png')
         vision_x = [self.image_processor(simple_white_image).unsqueeze(0)]
         vision_x = torch.cat(vision_x, dim=0)
-        self.vision_x = vision_x.unsqueeze(1).unsqueeze(0)
+        self.vision_x = vision_x.unsqueeze(1).unsqueeze(0).to(self.device)
 
 
 class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
@@ -54,7 +56,7 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                 lang_x = self.tokenizer(
                     [prompt],
                     return_tensors="pt",
-                )
+                ).to(self.device)
 
                 generated_text = self.model.generate(
                     vision_x=self.vision_x,

@@ -38,10 +38,13 @@ The project is organized into the following main components:
 - [x] Implement evaluation based on model size
 - [ ] implement evaluation on CLIP model
 - [ ] implement evaluation on GIT model
-- [ ] implement benchmarking of Flamingo on VL-commonsense 
+- [ ] implement benchmarking of Flamingo on VL-commonsense- size_smaller and size_larger
+- [ ] Flamingo high latency issue
 - [x] add evaluation on wiki-{color, shep, material}; in case other results are not proving anything
 - [ ] Debug and investigate low accuracy issues
   - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
+- [ ] implement soft-prompt
+- [ ] usage of train data before test data
 - [ ] refactor evaluate function; a lot of repeated code
 - [ ] Complete benchmark runs and generate final report
