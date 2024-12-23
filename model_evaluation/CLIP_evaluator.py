@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, CLIPTextModel
@@ -10,7 +11,7 @@ from benckmarks.benchmark import SpatialCommonsenseSizeBenchmark, \
     WikiColorVLCommonsenseBenchmark, ShapeVLCommonsenseTestBenchmark, ColorVLCommonsenseTestBenchmark, \
     MaterialVLCommonsenseTestBenchmark, WikiShapeVLCommonsenseTestBenchmark, WikiMaterialVLCommonsenseTestBenchmark, \
     WikiColorVLCommonsenseTestBenchmark, SizeLargerVLCommonsenseBenchmark, SizeLargerVLCommonsenseTestBenchmark, \
-    SizeSmallerVLCommonsenseBenchmark, SizeSmallerVLCommonsenseTestBenchmark
+    SizeSmallerVLCommonsenseBenchmark, SizeSmallerVLCommonsenseTestBenchmark, SpatialCommonsenseHeightBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -22,6 +23,60 @@ class CLIPEvaluator(ModelEvaluator):
         super().__init__(model, benchmark)
         self.tokenizer = tokenizer
         model.to(self.device)
+
+
+class CLIPSpatialCommonsenseEvaluator(CLIPEvaluator):
+    def __init__(self, benchmark, adjective_scale: tuple):
+        super().__init__(benchmark)
+
+        self.adjective_scale_embedding = self.calc_adjective_scale_embedding(adjective_scale).unsqueeze(0)
+
+    def calc_adjective_scale_embedding(self, adjective_scale):
+        adjective, antonym = adjective_scale
+        embeddings = self.get_words_embedding([adjective, antonym])
+        adjective_embedding, antonym_embedding = embeddings[0], embeddings[1]
+        scale_vector = adjective_embedding - antonym_embedding
+        return scale_vector
+
+    def get_words_embedding(self, words: list):
+        with torch.no_grad():
+            text_input = self.tokenizer(words, return_tensors="pt", padding=True).to(self.device)
+            model_output = self.model(**text_input)
+            word_embedding = model_output.pooler_output
+        return word_embedding
+
+    def evaluate(self):
+        count_correct = 0
+        for sample in self.benchmark:
+            object_main, object_secondary = sample['obj_a'], sample['obj_b']
+            embeddings = self.get_words_embedding([object_main, object_secondary])
+            object_main_embedding, object_secondary_embedding = embeddings[0].unsqueeze(0), embeddings[1].unsqueeze(0)
+
+            main_object_sim_score = F.cosine_similarity(self.adjective_scale_embedding, object_main_embedding)
+            sec_object_sim_score = F.cosine_similarity(self.adjective_scale_embedding, object_secondary_embedding)
+
+            correct_label = False if sample['label'] == 0 else True
+            predicted_label = main_object_sim_score > sec_object_sim_score
+
+            count_correct += (1 if predicted_label == correct_label else 0)
+
+        self.benchmark_log["correct"] = count_correct
+        self.benchmark_log["total"] = len(self.benchmark)
+        self.write_log()
+
+        return self.benchmark_log
+
+
+class CLIPSpatialCommonsenseSizeEvaluator(CLIPSpatialCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = SpatialCommonsenseSizeBenchmark()
+        super().__init__(benchmark, ("large", "small"))
+
+
+class CLIPSpatialCommonsenseHeightEvaluator(CLIPSpatialCommonsenseEvaluator):
+    def __init__(self):
+        benchmark = SpatialCommonsenseHeightBenchmark()
+        super().__init__(benchmark, ("tall", "short"))
 
 
 class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
