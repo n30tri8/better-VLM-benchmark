@@ -53,13 +53,13 @@ if __name__ == "__main__":
     print(f"GPT2::Accuracy on VL-commonsense wiki shape:")
     print(results_wiki_shape_gpt2)
 
-    # Add VL-commonsense color benchmark
+    # Add VL-commonsense wiki color benchmark
     gpt2_vlcommonsense_wiki_color_evaluator = GPT2VLCommonsenseWikiColorEvaluator()
     results_wiki_color_gpt2 = gpt2_vlcommonsense_wiki_color_evaluator.evaluate()
     print(f"GPT2::Accuracy on VL-commonsense wiki color:")
     print(results_wiki_color_gpt2)
 
-    # Add VL-commonsense material benchmark
+    # Add VL-commonsense wiki material benchmark
     gpt2_vlcommonsense_wiki_material_evaluator = GPT2VLCommonsenseWikiMaterialEvaluator()
     results_wiki_material_gpt2 = gpt2_vlcommonsense_wiki_material_evaluator.evaluate()
     print(f"GPT2::Accuracy on VL-commonsense wiki material:")
