@@ -24,6 +24,24 @@ The project is organized into the following main components:
 
 - **Diverse Datasets**: The use of two distinct benchmarking datasets ensures a comprehensive assessment of the models' capabilities in different domains of common sense reasoning.
 
+## How to Run the Project
+
+To run this project, follow these steps:
+
+1. **Install Python**: Ensure you have **Python 3.10** installed on your system.
+
+2. **Install Dependencies**: Use the `requirements.txt` file to install all necessary dependencies. Run the following command in your terminal:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Specific Package Versions**: Make sure you have the following specific versions of key packages installed:
+    - `torch==2.0.1`
+    - `transformers==4.33.0`
+
+By following these steps, you will set up the environment required to run the project and perform model evaluations.
+
 
 **implementation decisions:**
 - i used a simple white image for prompting flamingo model as a dummy input since it probably requires an image input
