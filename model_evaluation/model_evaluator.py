@@ -8,7 +8,7 @@ class ModelEvaluator:
         self.benchmark = benchmark
         self.benchmark_log = {"correct": 0, "total": 0, "ambiguous_outputs": []}
 
-    def evaluate(self, benchmark):
+    def evaluate(self):
         pass
 
     def write_log(self):

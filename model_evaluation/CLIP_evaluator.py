@@ -113,7 +113,7 @@ class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
             text_input = self.tokenizer(all_input_text, padding=True, return_tensors="pt").to(self.device)
             model_output = self.model(**text_input)
             all_features = model_output.pooler_output
-            all_features = all_features.cpu().numpy()
+        all_features = all_features.cpu().numpy()
 
         return all_features, all_labels
 
@@ -257,104 +257,3 @@ class CLIPVLCommonsenseSizeLargerEvaluator(CLIPVLCommonsenseEvaluator):
                                  "{subject} is bigger than [obj] ."
                                  "[obj] is not as big as {subject} ."]
 
-
-class CLIPEvaluatorOnSizeCommonsense(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = SpatialCommonsenseSizeBenchmark()
-        super().__init__(benchmark)
-        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
-
-    def evaluate(self):
-        count_correct = 0
-        for batch in self.dataloader:
-            for question, label in zip(batch['question'], batch['label']):
-                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
-
-                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-                lang_x = self.tokenizer(
-                    [prompt],
-                    return_tensors="pt",
-                )
-
-                generated_text = self.model.generate(
-                    vision_x=self.vision_x,
-                    lang_x=lang_x["input_ids"],
-                    attention_mask=lang_x["attention_mask"],
-                    max_new_tokens=20,
-                    num_beams=3,
-                )
-
-                # Decode the generated output
-                generated_text = self.tokenizer.decode(generated_text[0])
-
-                # Extract the answer from the generated text
-                answer = generated_text[len(prompt):].strip().lower()
-
-                # Implement specific evaluation logic here
-                predicted_label = None
-                if "no" in answer:
-                    predicted_label = False
-                elif "yes" in answer:
-                    predicted_label = True
-                else:
-                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
-
-                correct_label = False if label == 0 else True
-
-                count_correct += (1 if predicted_label == correct_label else 0)
-        self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader.dataset)
-        self.write_log()
-
-        return self.benchmark_log
-
-
-class CLIPEvaluatorOnPosrelCommonsense(CLIPVLCommonsenseEvaluator):
-    def __init__(self):
-        benchmark = SpatialCommonsensePosrelBenchmark()
-        super().__init__(benchmark)
-        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
-
-    def evaluate(self):
-        count_correct = 0
-        for batch in self.dataloader:
-            for question, label in zip(batch['question'], batch['label']):
-                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
-
-                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-                lang_x = self.tokenizer(
-                    [prompt],
-                    return_tensors="pt",
-                )
-
-                generated_text = self.model.generate(
-                    vision_x=self.vision_x,
-                    lang_x=lang_x["input_ids"],
-                    attention_mask=lang_x["attention_mask"],
-                    max_new_tokens=20,
-                    num_beams=3,
-                )
-
-                # Decode the generated output
-                generated_text = self.tokenizer.decode(generated_text[0])
-
-                # Extract the answer from the generated text
-                answer = generated_text[len(prompt):].strip().lower()
-
-                # Implement specific evaluation logic here
-                predicted_label = None
-                if "no" in answer:
-                    predicted_label = False
-                elif "yes" in answer:
-                    predicted_label = True
-                else:
-                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
-
-                correct_label = False if label == 0 else True
-
-                count_correct += (1 if predicted_label == correct_label else 0)
-        self.benchmark_log["correct"] = count_correct
-        self.benchmark_log["total"] = len(self.dataloader.dataset)
-        self.write_log()
-
-        return self.benchmark_log

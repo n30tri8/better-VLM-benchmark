@@ -33,13 +33,24 @@ To run this project, follow these steps:
 2. **Install Dependencies**: Use the `requirements.txt` file to install all necessary dependencies. Run the following command in your terminal:
 
     ```bash
+   pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
     pip install -r requirements.txt
     ```
 
-3. **Specific Package Versions**: Make sure you have the following specific versions of key packages installed:
+3. **Specific Package Versions**: Make sure you have the following specific versions of key packages installed by running the command `pip show torch transformers`:
     - `torch==2.0.1`
     - `transformers==4.33.0`
 
+4. clone benchmarking repository: 
+    ```bash
+    git clone https://github.com/xxxiaol/spatial-commonsense
+    git clone https://github.com/ChenyuHeidiZhang/VL-commonsense.git
+    ```
+5. **Run the Evaluation Script**:
+
+    ```bash
+    python main.py
+    ```
 By following these steps, you will set up the environment required to run the project and perform model evaluations.
 
 
@@ -67,4 +78,5 @@ By following these steps, you will set up the environment required to run the pr
 - [ ] implement soft-prompt
 - [ ] usage of train data before test data
 - [ ] refactor evaluate function; a lot of repeated code
+- [ ] create model in a factory pattern: instead of a fresh initialization every time, and freeze the model
 - [ ] Complete benchmark runs and generate final report

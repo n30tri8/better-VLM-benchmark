@@ -58,13 +58,15 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
                     return_tensors="pt",
                 ).to(self.device)
 
-                generated_text = self.model.generate(
-                    vision_x=self.vision_x,
-                    lang_x=lang_x["input_ids"],
-                    attention_mask=lang_x["attention_mask"],
-                    max_new_tokens=20,
-                    num_beams=3,
-                )
+                generated_text = ''
+                with torch.no_grad():
+                    generated_text = self.model.generate(
+                        vision_x=self.vision_x,
+                        lang_x=lang_x["input_ids"],
+                        attention_mask=lang_x["attention_mask"],
+                        max_new_tokens=20,
+                        num_beams=3,
+                    )
 
                 # Decode the generated output
                 generated_text = self.tokenizer.decode(generated_text[0])
@@ -109,13 +111,15 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
                     return_tensors="pt",
                 )
 
-                generated_text = self.model.generate(
-                    vision_x=self.vision_x,
-                    lang_x=lang_x["input_ids"],
-                    attention_mask=lang_x["attention_mask"],
-                    max_new_tokens=20,
-                    num_beams=3,
-                )
+                generated_text = ''
+                with torch.no_grad():
+                    generated_text = self.model.generate(
+                        vision_x=self.vision_x,
+                        lang_x=lang_x["input_ids"],
+                        attention_mask=lang_x["attention_mask"],
+                        max_new_tokens=20,
+                        num_beams=3,
+                    )
 
                 # Decode the generated output
                 generated_text = self.tokenizer.decode(generated_text[0])
@@ -160,13 +164,15 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
                     return_tensors="pt",
                 )
 
-                generated_text = self.model.generate(
-                    vision_x=self.vision_x,
-                    lang_x=lang_x["input_ids"],
-                    attention_mask=lang_x["attention_mask"],
-                    max_new_tokens=20,
-                    num_beams=3,
-                )
+                generated_text = ''
+                with torch.no_grad():
+                    generated_text = self.model.generate(
+                        vision_x=self.vision_x,
+                        lang_x=lang_x["input_ids"],
+                        attention_mask=lang_x["attention_mask"],
+                        max_new_tokens=20,
+                        num_beams=3,
+                    )
 
                 # Decode the generated output
                 generated_text = self.tokenizer.decode(generated_text[0])
@@ -214,13 +220,15 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
                 return_tensors="pt",
             )
 
-            generated_text = self.model.generate(
-                vision_x=self.vision_x,
-                lang_x=lang_x["input_ids"],
-                attention_mask=lang_x["attention_mask"],
-                max_new_tokens=20,
-                num_beams=3,
-            )
+            generated_text = ''
+            with torch.no_grad():
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
+                )
 
             # Decode the generated text
             generated_text = self.tokenizer.decode(generated_text[0], skip_special_tokens=True)
