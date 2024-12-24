@@ -124,17 +124,17 @@ if __name__ == "__main__":
     # del model_evaluator
     # gc.collect()
     # torch.cuda.empty_cache()
-
-    # Flamingo model evaluations
-    # spatial_commonsense benchmark
-    model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on height commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    #
+    # # Flamingo model evaluations
+    # # spatial_commonsense benchmark
+    # model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on height commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
     evaluation_results = model_evaluator.evaluate()
