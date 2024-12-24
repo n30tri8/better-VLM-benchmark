@@ -50,7 +50,7 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
 
         for sample in self.dataloader:
             question, label = sample['question'], sample['label']
-            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+            prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
             lang_x = self.tokenizer(
@@ -103,7 +103,7 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
         count_correct = 0
         for sample in self.dataloader:
             question, label = sample['question'], sample['label']
-            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+            prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
             lang_x = self.tokenizer(
@@ -156,7 +156,7 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
         count_correct = 0
         for sample in self.dataloader:
             question, label = sample['question'], sample['label']
-            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+            prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
             lang_x = self.tokenizer(
@@ -203,7 +203,7 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
     def __init__(self, benchmark, prompt):
         super().__init__(benchmark)
         self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
-        self.prompt = "<image>ignore the content of image for answering<|endofchunk|>" + prompt
+        self.prompt = "<image>ignore the content of image for answering. <|endofchunk|>" + prompt
 
     def evaluate(self):
         count_correct = 0
@@ -237,6 +237,7 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
             # Remove punctuation from the predicted text
             predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
             # Get the first word as the predicted shape
+            print(predicted_text)
             predicted_obj = predicted_text.split()[0].lower()
             # Standardize the predicted object
             predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)

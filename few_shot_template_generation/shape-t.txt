@@ -1,0 +1,25 @@
+The shape of tassel is heart.
+The shape of diamond pattern is rhombus.
+The shape of man is cross.
+The shape of bath tub is oval.
+The shape of tiara is rhombus.
+The shape of monitor is square.
+The shape of cellphone is rectangle.
+The shape of fence post is round.
+The shape of cheese piece is square.
+The shape of eyeglass is oval.
+The shape of bird is round.
+The shape of cone is triangle.
+The shape of napkin holder is star.
+The shape of hoof is triangle.
+The shape of white sign is square.
+The shape of walk is cross.
+The shape of armrest is round.
+The shape of sticky note is rectangle.
+The shape of desk is rectangle.
+The shape of serving dish is oval.
+The shape of diamond is rhombus.
+The shape of half is triangle.
+The shape of track is cross.
+The shape of stop sign is octagon.
+The shape of toothpick is heart.

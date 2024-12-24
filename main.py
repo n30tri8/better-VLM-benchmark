@@ -135,25 +135,25 @@ if __name__ == "__main__":
     # del model_evaluator
     # gc.collect()
     # torch.cuda.empty_cache()
-
-    model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on size commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    model_evaluator = FlamingoEvaluatorOnPosrelCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on posrel commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
+    #
+    # model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on size commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # model_evaluator = FlamingoEvaluatorOnPosrelCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on posrel commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
     # VL-commonsense benchmark
     model_evaluator = FlamingoVLCommonsenseColorEvaluator()
     evaluation_results = model_evaluator.evaluate()
