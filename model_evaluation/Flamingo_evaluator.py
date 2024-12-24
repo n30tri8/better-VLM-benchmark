@@ -109,7 +109,7 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
             lang_x = self.tokenizer(
                 [prompt],
                 return_tensors="pt",
-            )
+            ).to(self.device)
 
             generated_text = ''
             with torch.no_grad():
@@ -162,7 +162,7 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
             lang_x = self.tokenizer(
                 [prompt],
                 return_tensors="pt",
-            )
+            ).to(self.device)
 
             generated_text = ''
             with torch.no_grad():
@@ -218,7 +218,7 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
             lang_x = self.tokenizer(
                 [prompt],
                 return_tensors="pt",
-            )
+            ).to(self.device)
 
             generated_text = ''
             with torch.no_grad():
