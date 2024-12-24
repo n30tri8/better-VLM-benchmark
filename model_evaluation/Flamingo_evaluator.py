@@ -43,49 +43,49 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
     def __init__(self):
         benchmark = SpatialCommonsenseHeightBenchmark()
         super().__init__(benchmark)
-        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
+        self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
 
     def evaluate(self):
         count_correct = 0
 
-        for batch in self.dataloader:
-            for question, label in zip(batch['question'], batch['label']):
-                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+        for sample in self.dataloader:
+            question, label = sample['question'], sample['label']
+            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
-                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-                lang_x = self.tokenizer(
-                    [prompt],
-                    return_tensors="pt",
-                ).to(self.device)
+            self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+            lang_x = self.tokenizer(
+                [prompt],
+                return_tensors="pt",
+            ).to(self.device)
 
-                generated_text = ''
-                with torch.no_grad():
-                    generated_text = self.model.generate(
-                        vision_x=self.vision_x,
-                        lang_x=lang_x["input_ids"],
-                        attention_mask=lang_x["attention_mask"],
-                        max_new_tokens=20,
-                        num_beams=3,
-                    )
+            generated_text = ''
+            with torch.no_grad():
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
+                )
 
-                # Decode the generated output
-                generated_text = self.tokenizer.decode(generated_text[0])
+            # Decode the generated output
+            generated_text = self.tokenizer.decode(generated_text[0])
 
-                # Extract the answer from the generated text
-                answer = generated_text[len(prompt):].strip().lower()
+            # Extract the answer from the generated text
+            answer = generated_text[len(prompt):].strip().lower()
 
-                # Implement specific evaluation logic here
-                predicted_label = None
-                if "no" in answer:
-                    predicted_label = False
-                elif "yes" in answer:
-                    predicted_label = True
-                else:
-                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
+            # Implement specific evaluation logic here
+            predicted_label = None
+            if "no" in answer:
+                predicted_label = False
+            elif "yes" in answer:
+                predicted_label = True
+            else:
+                self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                correct_label = False if label == 0 else True
+            correct_label = False if label == 0 else True
 
-                count_correct += (1 if predicted_label == correct_label else 0)
+            count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
         self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
@@ -101,44 +101,44 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
 
     def evaluate(self):
         count_correct = 0
-        for batch in self.dataloader:
-            for question, label in zip(batch['question'], batch['label']):
-                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+        for sample in self.dataloader:
+            question, label = sample['question'], sample['label']
+            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
-                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-                lang_x = self.tokenizer(
-                    [prompt],
-                    return_tensors="pt",
+            self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+            lang_x = self.tokenizer(
+                [prompt],
+                return_tensors="pt",
+            )
+
+            generated_text = ''
+            with torch.no_grad():
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
                 )
 
-                generated_text = ''
-                with torch.no_grad():
-                    generated_text = self.model.generate(
-                        vision_x=self.vision_x,
-                        lang_x=lang_x["input_ids"],
-                        attention_mask=lang_x["attention_mask"],
-                        max_new_tokens=20,
-                        num_beams=3,
-                    )
+            # Decode the generated output
+            generated_text = self.tokenizer.decode(generated_text[0])
 
-                # Decode the generated output
-                generated_text = self.tokenizer.decode(generated_text[0])
+            # Extract the answer from the generated text
+            answer = generated_text[len(prompt):].strip().lower()
 
-                # Extract the answer from the generated text
-                answer = generated_text[len(prompt):].strip().lower()
+            # Implement specific evaluation logic here
+            predicted_label = None
+            if "no" in answer:
+                predicted_label = False
+            elif "yes" in answer:
+                predicted_label = True
+            else:
+                self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                # Implement specific evaluation logic here
-                predicted_label = None
-                if "no" in answer:
-                    predicted_label = False
-                elif "yes" in answer:
-                    predicted_label = True
-                else:
-                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
+            correct_label = False if label == 0 else True
 
-                correct_label = False if label == 0 else True
-
-                count_correct += (1 if predicted_label == correct_label else 0)
+            count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
         self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
@@ -154,44 +154,44 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
 
     def evaluate(self):
         count_correct = 0
-        for batch in self.dataloader:
-            for question, label in zip(batch['question'], batch['label']):
-                prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
+        for sample in self.dataloader:
+            question, label = sample['question'], sample['label']
+            prompt = f"<image>ignore the content of image for answering<|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
-                self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
-                lang_x = self.tokenizer(
-                    [prompt],
-                    return_tensors="pt",
+            self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
+            lang_x = self.tokenizer(
+                [prompt],
+                return_tensors="pt",
+            )
+
+            generated_text = ''
+            with torch.no_grad():
+                generated_text = self.model.generate(
+                    vision_x=self.vision_x,
+                    lang_x=lang_x["input_ids"],
+                    attention_mask=lang_x["attention_mask"],
+                    max_new_tokens=20,
+                    num_beams=3,
                 )
 
-                generated_text = ''
-                with torch.no_grad():
-                    generated_text = self.model.generate(
-                        vision_x=self.vision_x,
-                        lang_x=lang_x["input_ids"],
-                        attention_mask=lang_x["attention_mask"],
-                        max_new_tokens=20,
-                        num_beams=3,
-                    )
+            # Decode the generated output
+            generated_text = self.tokenizer.decode(generated_text[0])
 
-                # Decode the generated output
-                generated_text = self.tokenizer.decode(generated_text[0])
+            # Extract the answer from the generated text
+            answer = generated_text[len(prompt):].strip().lower()
 
-                # Extract the answer from the generated text
-                answer = generated_text[len(prompt):].strip().lower()
+            # Implement specific evaluation logic here
+            predicted_label = None
+            if "no" in answer:
+                predicted_label = False
+            elif "yes" in answer:
+                predicted_label = True
+            else:
+                self.benchmark_log["ambiguous_outputs"].append([question, answer])
 
-                # Implement specific evaluation logic here
-                predicted_label = None
-                if "no" in answer:
-                    predicted_label = False
-                elif "yes" in answer:
-                    predicted_label = True
-                else:
-                    self.benchmark_log["ambiguous_outputs"].append([question, answer])
+            correct_label = False if label == 0 else True
 
-                correct_label = False if label == 0 else True
-
-                count_correct += (1 if predicted_label == correct_label else 0)
+            count_correct += (1 if predicted_label == correct_label else 0)
         self.benchmark_log["correct"] = count_correct
         self.benchmark_log["total"] = len(self.dataloader.dataset)
         self.write_log()
