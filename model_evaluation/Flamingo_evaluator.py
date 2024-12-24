@@ -97,7 +97,7 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
     def __init__(self):
         benchmark = SpatialCommonsenseSizeBenchmark()
         super().__init__(benchmark)
-        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
+        self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
 
     def evaluate(self):
         count_correct = 0
@@ -150,7 +150,7 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
     def __init__(self):
         benchmark = SpatialCommonsensePosrelBenchmark()
         super().__init__(benchmark)
-        self.dataloader = DataLoader(benchmark, batch_size=32, shuffle=False)
+        self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
 
     def evaluate(self):
         count_correct = 0
