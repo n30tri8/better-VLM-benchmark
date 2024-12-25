@@ -85,3 +85,4 @@ By following these steps, you will set up the environment required to run the pr
 - [ ] Complete benchmark runs and generate final report
 - [ ] accurate equivalent benchmarking.
   - [ ] GPT2 size_smaller\larger is not using training data, is CLIP using training data?
+  - [ ] CLIP is using all training data compared to GPT2 using a subset of training data

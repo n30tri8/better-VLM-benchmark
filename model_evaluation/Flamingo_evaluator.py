@@ -49,7 +49,7 @@ class FlamingoEvaluatorOnHeightCommonsense(FlamingoEvaluator):
         count_correct = 0
 
         for sample in self.dataloader:
-            question, label = sample['question'], sample['label']
+            question, label = sample['question'][0], sample['label'][0]
             prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
@@ -102,7 +102,7 @@ class FlamingoEvaluatorOnSizeCommonsense(FlamingoEvaluator):
     def evaluate(self):
         count_correct = 0
         for sample in self.dataloader:
-            question, label = sample['question'], sample['label']
+            question, label = sample['question'][0], sample['label'][0]
             prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
@@ -155,7 +155,7 @@ class FlamingoEvaluatorOnPosrelCommonsense(FlamingoEvaluator):
     def evaluate(self):
         count_correct = 0
         for sample in self.dataloader:
-            question, label = sample['question'], sample['label']
+            question, label = sample['question'][0], sample['label'][0]
             prompt = f"<image>ignore the content of image for answering. <|endofchunk|>After the next question comes \"yes\" or \"no\": {question}\nAnswer:"
 
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
@@ -205,13 +205,18 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
         self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
         self.prompt = "<image>ignore the content of image for answering. <|endofchunk|>" + prompt
 
+    @staticmethod
+    def load_prompt_template(file_path):
+        with open(file_path, 'r') as file:
+            template = file.read().strip()
+            return template
+
     def evaluate(self):
         count_correct = 0
         for item in self.dataloader:
             subject = item['sub'][0]
             correct_obj = item['obj'][0].lower()
 
-            # Create a prompt suitable for GPT-2
             prompt = self.prompt.format(subject=subject)
             # Encode the prompt
             self.tokenizer.padding_side = "left"  # For generation padding tokens should be on the left
@@ -237,7 +242,6 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
             # Remove punctuation from the predicted text
             predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
             # Get the first word as the predicted shape
-            print(predicted_text)
             predicted_obj = predicted_text.split()[0].lower()
             # Standardize the predicted object
             predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)
@@ -255,40 +259,40 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
 class FlamingoVLCommonsenseShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
+        prompt = self.load_prompt_template('./few_shot_template_generation/shape-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = MaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/material-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/color-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-shape-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiMaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-material-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-color-t.txt')
         super().__init__(benchmark, prompt)
