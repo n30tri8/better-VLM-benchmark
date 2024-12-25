@@ -46,3 +46,5 @@ The material of saddlebag is leather.
 The material of bill is paper.
 The material of nametag is cloth.
 The material of toaster is bronze.
+
+The material of {subject} is

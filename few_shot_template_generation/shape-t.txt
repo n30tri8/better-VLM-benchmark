@@ -23,3 +23,5 @@ The shape of half is triangle.
 The shape of track is cross.
 The shape of stop sign is octagon.
 The shape of toothpick is heart.
+
+The shape of {subject} is

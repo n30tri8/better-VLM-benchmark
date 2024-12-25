@@ -68,15 +68,20 @@ By following these steps, you will set up the environment required to run the pr
 - [x] implement evaluation on CLIP model
   - [x] benchmarking on all datasets
   - [x] recheck the implementation
-- [ ] implement evaluation on GIT model
-- [ ] implement benchmarking of Flamingo on VL-commonsense- size_smaller and size_larger
-- [ ] Flamingo high latency issue
+- [ ] GIT model
+  - [ ] implement evaluation on GIT model
+- [ ] Flamingo model
+  - [ ] implement benchmarking of Flamingo on VL-commonsense- size_smaller and size_larger
+  - [ ] Flamingo high latency issue
 - [x] add evaluation on wiki-{color, shep, material}; in case other results are not proving anything
 - [ ] Debug and investigate low accuracy issues
   - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
 - [ ] implement soft-prompt
-- [ ] usage of train data before test data
-- [ ] refactor evaluate function; a lot of repeated code
-- [ ] create model in a factory pattern: instead of a fresh initialization every time, and freeze the model
+- [x] usage of train data before test data
+- [ ] refactoring
+  - [ ] evaluate function; a lot of repeated code
+  - [ ] create model in a factory pattern: instead of a fresh initialization every time, and freeze the model
 - [ ] Complete benchmark runs and generate final report
+- [ ] accurate equivalent benchmarking.
+  - [ ] GPT2 size_smaller\larger is not using training data, is CLIP using training data?

@@ -34,3 +34,5 @@ The color of sea water is blue.
 The color of electrical line is black.
 The color of egg yolk is yellow.
 The color of carrot is orange.
+
+The color of {subject} is

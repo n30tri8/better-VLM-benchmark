@@ -30,3 +30,5 @@ The color of advert is white.
 The color of juice is orange.
 The color of handset is black.
 The color of chopstick is silver.
+
+The color of {subject} is

@@ -12,9 +12,9 @@ from .model_evaluator import ModelEvaluator
 
 class GPT2Evaluator(ModelEvaluator):
     def __init__(self, benchmark):
-        tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+        tokenizer = GPT2Tokenizer.from_pretrained('gpt2-medium')
         tokenizer.pad_token = tokenizer.eos_token
-        model = GPT2LMHeadModel.from_pretrained('gpt2')
+        model = GPT2LMHeadModel.from_pretrained('gpt2-medium')
         super().__init__(model, benchmark)
         self.model.to(self.device)
         self.tokenizer = tokenizer
@@ -177,6 +177,12 @@ class GPT2VLCommonsenseEvaluator(GPT2Evaluator):
         self.dataloader = DataLoader(benchmark, batch_size=1, shuffle=False)
         self.prompt = prompt
 
+    @staticmethod
+    def load_prompt_template(file_path):
+        with open(file_path, 'r') as file:
+            template = file.read().strip()
+            return template
+
     def evaluate(self):
         count_correct = 0
         for item in self.dataloader:
@@ -221,21 +227,21 @@ class GPT2VLCommonsenseEvaluator(GPT2Evaluator):
 class GPT2VLCommonsenseShapeEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
+        prompt = self.load_prompt_template('./few_shot_template_generation/shape-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseMaterialEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = MaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/material-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseColorEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/color-t.txt')
         super().__init__(benchmark, prompt)
 
 
@@ -348,19 +354,19 @@ class GPT2VLCommonsenseSizeSmallerEvaluator(GPT2VLCommonsenseEvaluator):
 class GPT2VLCommonsenseWikiShapeEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiShapeVLCommonsenseBenchmark()
-        prompt = "In one word, the typical shape of a {subject} is a"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-shape-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseWikiMaterialEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiMaterialVLCommonsenseBenchmark()
-        prompt = "In one word, the typical material of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-material-t.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseWikiColorEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiColorVLCommonsenseBenchmark()
-        prompt = "In one word, the typical color of a {subject} is"
+        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-color-t.txt')
         super().__init__(benchmark, prompt)

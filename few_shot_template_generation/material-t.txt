@@ -47,3 +47,5 @@ The material of obstacle is wood.
 The material of tissue is paper.
 The material of hurdle is wood.
 The material of fence bar is metal.
+
+The material of {subject} is
