@@ -236,12 +236,12 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
                 )
 
             # Decode the generated text
-            generated_text = self.tokenizer.decode(generated_text[0], skip_special_tokens=True)
+            generated_text = self.tokenizer.decode(generated_text[0])
             # Extract the predicted object
-            predicted_text = generated_text[len(prompt):].strip().lower()
+            predicted_text = generated_text[len(prompt):].strip().rstrip('<|endofchunk|>')
             # Remove punctuation from the predicted text
             predicted_text = predicted_text.translate(str.maketrans('', '', string.punctuation))
-            # Get the first word as the predicted shape
+            # Get the first word as the predicted object
             predicted_obj = predicted_text.split()[0].lower()
             # Standardize the predicted object
             predicted_obj = self.benchmark.standard_mapping.get(predicted_obj, predicted_obj)
