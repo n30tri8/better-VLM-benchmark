@@ -175,36 +175,36 @@ class WikiColorVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
 # excerpt benchmark datasets to have a fair benchmark
 class ShapeVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/shape-selected-trainset.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense_preprocessed/shape-selected-trainset.jsonl')
         super().__init__(distribution_file)
 
 
 class ColorVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/color-selected-trainset.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense_preprocessed/color-selected-trainset.jsonl')
         super().__init__(distribution_file)
 
 
 class MaterialVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/material-selected-trainset.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense_preprocessed/material-selected-trainset.jsonl')
         super().__init__(distribution_file)
 
 
 class WikiShapeVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/wiki-shape-selected-trainset.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense_preprocessed/wiki-shape-selected-trainset.jsonl')
         super().__init__(distribution_file)
 
 
 class WikiMaterialVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
         distribution_file = os.path.join(PROJECT_ROOT,
-                                         'VL-commonsense-preprocessed/wiki-material-selected-trainset.jsonl')
+                                         'VL-commonsense_preprocessed/wiki-material-selected-trainset.jsonl')
         super().__init__(distribution_file)
 
 
 class WikiColorVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/wiki-color-selected-trainset.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense_preprocessed/wiki-color-selected-trainset.jsonl')
         super().__init__(distribution_file)

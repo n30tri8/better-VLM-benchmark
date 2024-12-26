@@ -47,85 +47,85 @@ if __name__ == "__main__":
     # gc.collect()
     # torch.cuda.empty_cache()
 
-    # VL-commonsense benchmark
-    model_evaluator = GPT2VLCommonsenseShapeEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense shape:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense color benchmark
-    model_evaluator = GPT2VLCommonsenseColorEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense color:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense material benchmark
-    model_evaluator = GPT2VLCommonsenseMaterialEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense material:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki shape benchmark
-    model_evaluator = GPT2VLCommonsenseWikiShapeEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense wiki shape:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki color benchmark
-    model_evaluator = GPT2VLCommonsenseWikiColorEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense wiki color:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki material benchmark
-    model_evaluator = GPT2VLCommonsenseWikiMaterialEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense wiki material:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense size larger benchmark
-    model_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense size larger:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense size smaller benchmark
-    model_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on VL-commonsense size smaller:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    # # VL-commonsense benchmark
+    # model_evaluator = GPT2VLCommonsenseShapeEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense shape:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense color benchmark
+    # model_evaluator = GPT2VLCommonsenseColorEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense color:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense material benchmark
+    # model_evaluator = GPT2VLCommonsenseMaterialEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense material:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki shape benchmark
+    # model_evaluator = GPT2VLCommonsenseWikiShapeEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense wiki shape:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki color benchmark
+    # model_evaluator = GPT2VLCommonsenseWikiColorEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense wiki color:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki material benchmark
+    # model_evaluator = GPT2VLCommonsenseWikiMaterialEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense wiki material:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense size larger benchmark
+    # model_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense size larger:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense size smaller benchmark
+    # model_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on VL-commonsense size smaller:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     # Flamingo model evaluations
     # spatial_commonsense benchmark
@@ -155,87 +155,87 @@ if __name__ == "__main__":
     # del model_evaluator
     # gc.collect()
     # torch.cuda.empty_cache()
-
-    # VL-commonsense benchmark
-    # VL-commonsense color benchmark
-    model_evaluator = FlamingoVLCommonsenseColorEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense color:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense shape benchmark
-    model_evaluator = FlamingoVLCommonsenseShapeEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense shape:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense material benchmark
-    model_evaluator = FlamingoVLCommonsenseMaterialEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense material:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki shape benchmark
-    model_evaluator = FlamingoVLCommonsenseWikiShapeEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense wiki shape:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki color benchmark
-    model_evaluator = FlamingoVLCommonsenseWikiColorEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense wiki color:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense wiki material benchmark
-    model_evaluator = FlamingoVLCommonsenseWikiMaterialEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense wiki material:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense size larger benchmark
-    model_evaluator = FlamingoVLCommonsenseSizeLargerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense size larger:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense size smaller benchmark
-    model_evaluator = FlamingoVLCommonsenseSizeSmallerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on VL-commonsense size smaller:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    #
+    # # VL-commonsense benchmark
+    # # VL-commonsense color benchmark
+    # model_evaluator = FlamingoVLCommonsenseColorEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense color:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense shape benchmark
+    # model_evaluator = FlamingoVLCommonsenseShapeEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense shape:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense material benchmark
+    # model_evaluator = FlamingoVLCommonsenseMaterialEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense material:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki shape benchmark
+    # model_evaluator = FlamingoVLCommonsenseWikiShapeEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense wiki shape:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki color benchmark
+    # model_evaluator = FlamingoVLCommonsenseWikiColorEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense wiki color:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense wiki material benchmark
+    # model_evaluator = FlamingoVLCommonsenseWikiMaterialEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense wiki material:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense size larger benchmark
+    # model_evaluator = FlamingoVLCommonsenseSizeLargerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense size larger:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense size smaller benchmark
+    # model_evaluator = FlamingoVLCommonsenseSizeSmallerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on VL-commonsense size smaller:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     # # GIT model evaluations
     # # spatial_commonsense benchmark
@@ -251,26 +251,26 @@ if __name__ == "__main__":
     # GIT model evaluations
     # spatial_commonsense benchmark
 
-    # CLIP model evaluations
-    # spatial_commonsense size benchmark
-    model_evaluator = CLIPSpatialCommonsenseSizeEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on size commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # spatial_commonsense height benchmark
-    model_evaluator = CLIPSpatialCommonsenseHeightEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on height commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    # # CLIP model evaluations
+    # # spatial_commonsense size benchmark
+    # model_evaluator = CLIPSpatialCommonsenseSizeEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"CLIP::Accuracy on size commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # spatial_commonsense height benchmark
+    # model_evaluator = CLIPSpatialCommonsenseHeightEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"CLIP::Accuracy on height commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     # VL-commonsense shape benchmark
     model_evaluator = CLIPVLCommonsenseShapeEvaluator()
