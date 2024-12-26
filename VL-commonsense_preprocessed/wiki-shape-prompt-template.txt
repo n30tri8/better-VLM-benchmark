@@ -1,0 +1,26 @@
+The shape of muffler is oval.
+The shape of pasture is cross.
+The shape of polish is star.
+The shape of license is cross.
+The shape of bridle is triangle.
+The shape of tongs is round.
+The shape of lei is square.
+The shape of stain is cross.
+The shape of armchair is rhombus.
+The shape of underside is round.
+The shape of pickup is star.
+The shape of wool is oval.
+The shape of cutter is rhombus.
+The shape of scissors is triangle.
+The shape of menu is heart.
+The shape of lining is heart.
+The shape of rabbit is round.
+The shape of foliage is square.
+The shape of pine is heart.
+The shape of feather is triangle.
+The shape of diaper is rhombus.
+The shape of tinsel is oval.
+The shape of spindle is square.
+The shape of trinket is star.
+
+The shape of {subject} is

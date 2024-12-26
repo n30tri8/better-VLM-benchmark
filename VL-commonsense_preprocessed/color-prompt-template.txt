@@ -1,0 +1,38 @@
+The color of patio is gray.
+The color of sunlight is yellow.
+The color of brake light is red.
+The color of flush handle is silver.
+The color of surge protector is white.
+The color of pasture is green.
+The color of truck bed is blue.
+The color of shredded carrot is orange.
+The color of bread slice is brown.
+The color of windshield is black.
+The color of night table is brown.
+The color of sprout is green.
+The color of gondola is yellow.
+The color of flamingo is pink.
+The color of tulip bud is purple.
+The color of watermark is white.
+The color of wind sock is red.
+The color of umbrella shade is pink.
+The color of overcast sky is gray.
+The color of plaid shirt is blue.
+The color of iris is purple.
+The color of windsock is orange.
+The color of gold accent is yellow.
+The color of blinker is orange.
+The color of satellite is gray.
+The color of frond is green.
+The color of garbage bag is black.
+The color of flask is silver.
+The color of uniform shirt is blue.
+The color of sign pole is black.
+The color of elephant tusk is white.
+The color of candlestick is silver.
+The color of holly is red.
+The color of flower bloom is purple.
+The color of cereal is brown.
+The color of birthday candle is pink.
+
+The color of {subject} is

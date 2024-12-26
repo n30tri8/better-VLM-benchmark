@@ -1,0 +1,23 @@
+The shape of tiara is rhombus.
+The shape of diamond is rhombus.
+The shape of television is square.
+The shape of plantain is oval.
+The shape of track is cross.
+The shape of serving dish is oval.
+The shape of barrier is round.
+The shape of object is round.
+The shape of server is triangle.
+The shape of man is cross.
+The shape of walkway is square.
+The shape of walk is cross.
+The shape of cone is triangle.
+The shape of eye is round.
+The shape of cheese piece is square.
+The shape of name tag is oval.
+The shape of sticky note is rectangle.
+The shape of pine tree is triangle.
+The shape of cellphone is rectangle.
+The shape of desk is rectangle.
+The shape of baseball field is rhombus.
+
+The shape of {subject} is

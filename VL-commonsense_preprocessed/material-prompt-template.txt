@@ -1,0 +1,47 @@
+The material of paving is stone.
+The material of feature is concrete.
+The material of pavers is stone.
+The material of pennant is plastic.
+The material of overall is denim.
+The material of half pipe is concrete.
+The material of duck is rubber.
+The material of double door is wood.
+The material of toilet brush is metal.
+The material of robe is cloth.
+The material of capri is denim.
+The material of frying pan is iron.
+The material of paint is gold.
+The material of skillet is iron.
+The material of light post is metal.
+The material of coffee mug is ceramic.
+The material of paper tray is plastic.
+The material of wrist band is cloth.
+The material of rain boot is rubber.
+The material of lighted globe is glass.
+The material of stovetop is glass.
+The material of booklet is paper.
+The material of whistle is gold.
+The material of tissue is paper.
+The material of mountain is stone.
+The material of litter is paper.
+The material of motorcycle seat is leather.
+The material of pedal is metal.
+The material of ashtray is glass.
+The material of blue jean is denim.
+The material of sock is cotton.
+The material of parquet floor is wood.
+The material of sweat band is cotton.
+The material of catcher's mitt is leather.
+The material of work is iron.
+The material of skateboard park is concrete.
+The material of white plate is ceramic.
+The material of tank top is cotton.
+The material of front tire is rubber.
+The material of kitchen cabinet is wood.
+The material of locomotive is gold.
+The material of knick knack is ceramic.
+The material of purse is leather.
+The material of headband is cloth.
+The material of mouse is plastic.
+
+The material of {subject} is

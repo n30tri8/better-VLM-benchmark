@@ -1,0 +1,21 @@
+{"sub": "tiara", "obj": "rhombus", "alt": "cross"}
+{"sub": "diamond", "obj": "rhombus", "alt": "oval"}
+{"sub": "television", "obj": "square", "alt": "star"}
+{"sub": "plantain", "obj": "oval", "alt": "rhombus"}
+{"sub": "track", "obj": "cross", "alt": "rhombus"}
+{"sub": "serving dish", "obj": "oval", "alt": "cross"}
+{"sub": "barrier", "obj": "round", "alt": "rhombus"}
+{"sub": "object", "obj": "round", "alt": "rhombus"}
+{"sub": "server", "obj": "triangle", "alt": "semicircle"}
+{"sub": "man", "obj": "cross", "alt": "semicircle"}
+{"sub": "walkway", "obj": "square", "alt": "oval"}
+{"sub": "walk", "obj": "cross", "alt": "rectangle"}
+{"sub": "cone", "obj": "triangle", "alt": "octagon"}
+{"sub": "eye", "obj": "round", "alt": "square"}
+{"sub": "cheese piece", "obj": "square", "alt": "triangle"}
+{"sub": "name tag", "obj": "oval", "alt": "rhombus"}
+{"sub": "sticky note", "obj": "rectangle", "alt": "round"}
+{"sub": "pine tree", "obj": "triangle", "alt": "square"}
+{"sub": "cellphone", "obj": "rectangle", "alt": "triangle"}
+{"sub": "desk", "obj": "rectangle", "alt": "square"}
+{"sub": "baseball field", "obj": "rhombus", "alt": "oval"}

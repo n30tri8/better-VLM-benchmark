@@ -1,0 +1,32 @@
+The color of gull is silver.
+The color of hangar is blue.
+The color of notice is red.
+The color of footer is brown.
+The color of slice is orange.
+The color of juice is orange.
+The color of strainer is silver.
+The color of bookbag is blue.
+The color of telephone is red.
+The color of yacht is white.
+The color of boardwalk is orange.
+The color of cutlery is silver.
+The color of patty is brown.
+The color of brownie is yellow.
+The color of r is white.
+The color of flamingo is pink.
+The color of parsley is green.
+The color of carpet is red.
+The color of walnut is black.
+The color of opener is yellow.
+The color of guacamole is green.
+The color of bleacher is black.
+The color of onesie is pink.
+The color of w is brown.
+The color of handset is black.
+The color of cornbread is yellow.
+The color of dalmatian is pink.
+The color of bureau is blue.
+The color of lawn is green.
+The color of freezer is white.
+
+The color of {subject} is
