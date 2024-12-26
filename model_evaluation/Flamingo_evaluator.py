@@ -259,40 +259,40 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
 class FlamingoVLCommonsenseShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ShapeVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/shape-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = MaterialVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/material-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = ColorVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/color-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/color-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiShapeVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-shape-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiMaterialVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-material-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
         benchmark = WikiColorVLCommonsenseBenchmark()
-        prompt = self.load_prompt_template('./few_shot_template_generation/wiki-color-t.txt')
+        prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-color-prompt-template.txt')
         super().__init__(benchmark, prompt)

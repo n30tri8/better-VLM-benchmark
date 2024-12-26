@@ -154,7 +154,8 @@ class WikiMaterialVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class WikiMaterialVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-material/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT,
+                                         'VL-commonsense/mine-data/db/wiki-material/single/color.txt.jsonl')
         super().__init__(distribution_file)
 
 
@@ -169,3 +170,47 @@ class WikiColorVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
         distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-color/single/color.txt.jsonl')
         super().__init__(distribution_file)
+
+
+# excerpt benchmark datasets to have a fair benchmark
+class ShapeVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/shape-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class ColorVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/color-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/color-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class MaterialVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/material-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/material-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class WikiShapeVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/wiki-shape-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/shape-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class WikiMaterialVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT,
+                                         'VL-commonsense-preprocessed/wiki-material-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/material-words.txt')
+        super().__init__(distribution_file, words_file)
+
+
+class WikiColorVLCommonsenseSelectBenchmark(VLCommonsenseBenchmarkDataset):
+    def __init__(self):
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense-preprocessed/wiki-color-selected-trainset.jsonl')
+        words_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/words/color-words.txt')
+        super().__init__(distribution_file, words_file)
