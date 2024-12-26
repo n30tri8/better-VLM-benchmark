@@ -10,7 +10,8 @@ from model_evaluation.Flamingo_evaluator import FlamingoEvaluatorOnHeightCommons
     FlamingoEvaluatorOnSizeCommonsense, FlamingoVLCommonsenseColorEvaluator, FlamingoVLCommonsenseMaterialEvaluator, \
     FlamingoVLCommonsenseWikiShapeEvaluator, FlamingoVLCommonsenseWikiColorEvaluator, \
     FlamingoVLCommonsenseWikiMaterialEvaluator, FlamingoEvaluatorOnPosrelCommonsense, \
-    FlamingoVLCommonsenseShapeEvaluator
+    FlamingoVLCommonsenseShapeEvaluator, FlamingoVLCommonsenseSizeLargerEvaluator, \
+    FlamingoVLCommonsenseSizeSmallerEvaluator
 from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT2VLCommonsenseColorEvaluator, \
     GPT2VLCommonsenseMaterialEvaluator, GPT2VLCommonsenseSizeLargerEvaluator, GPT2VLCommonsenseSizeSmallerEvaluator, \
     GPT2VLCommonsenseWikiMaterialEvaluator, GPT2VLCommonsenseWikiColorEvaluator, GPT2VLCommonsenseWikiShapeEvaluator, \
@@ -215,7 +216,27 @@ if __name__ == "__main__":
     del model_evaluator
     gc.collect()
     torch.cuda.empty_cache()
-    #
+
+    # VL-commonsense size larger benchmark
+    model_evaluator = FlamingoVLCommonsenseSizeLargerEvaluator()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"Flamingo::Accuracy on VL-commonsense size larger:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
+    # VL-commonsense size smaller benchmark
+    model_evaluator = FlamingoVLCommonsenseSizeSmallerEvaluator()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"Flamingo::Accuracy on VL-commonsense size smaller:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
     # # GIT model evaluations
     # # spatial_commonsense benchmark
     # model_evaluator = GITEvaluatorOnHeightCommonsense()
