@@ -17,35 +17,35 @@ from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT
     GPT2EvaluatorOnHeightCommonsense, GPT2EvaluatorOnSizeCommonsense, GPT2EvaluatorOnPosrelCommonsense
 
 if __name__ == "__main__":
-    # # GPT2 model evaluations
-    # # spatial_commonsense benchmark
-    # model_evaluator = GPT2EvaluatorOnHeightCommonsense()
-    # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on height commonsense:")
-    # print(evaluation_results)
-    #
-    # del model_evaluator
-    # gc.collect()
-    # torch.cuda.empty_cache()
-    #
-    # model_evaluator = GPT2EvaluatorOnSizeCommonsense()
-    # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on size commonsense:")
-    # print(evaluation_results)
-    #
-    # del model_evaluator
-    # gc.collect()
-    # torch.cuda.empty_cache()
-    #
-    # model_evaluator = GPT2EvaluatorOnPosrelCommonsense()
-    # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on posrel commonsense:")
-    # print(evaluation_results)
-    #
-    # del model_evaluator
-    # gc.collect()
-    # torch.cuda.empty_cache()
-    #
+    # GPT2 model evaluations
+    # spatial_commonsense benchmark
+    model_evaluator = GPT2EvaluatorOnHeightCommonsense()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"GPT2::Accuracy on height commonsense:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
+    model_evaluator = GPT2EvaluatorOnSizeCommonsense()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"GPT2::Accuracy on size commonsense:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
+    model_evaluator = GPT2EvaluatorOnPosrelCommonsense()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"GPT2::Accuracy on posrel commonsense:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
     # VL-commonsense benchmark
     model_evaluator = GPT2VLCommonsenseShapeEvaluator()
     evaluation_results = model_evaluator.evaluate()
@@ -105,27 +105,27 @@ if __name__ == "__main__":
     del model_evaluator
     gc.collect()
     torch.cuda.empty_cache()
-    #
-    # # VL-commonsense size larger benchmark
-    # model_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
-    # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense size larger:")
-    # print(evaluation_results)
-    #
-    # del model_evaluator
-    # gc.collect()
-    # torch.cuda.empty_cache()
-    #
-    # # VL-commonsense size smaller benchmark
-    # model_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
-    # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense size smaller:")
-    # print(evaluation_results)
-    #
-    # del model_evaluator
-    # gc.collect()
-    # torch.cuda.empty_cache()
-    #
+
+    # VL-commonsense size larger benchmark
+    model_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense size larger:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
+    # VL-commonsense size smaller benchmark
+    model_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
+    evaluation_results = model_evaluator.evaluate()
+    print(f"GPT2::Accuracy on VL-commonsense size smaller:")
+    print(evaluation_results)
+
+    del model_evaluator
+    gc.collect()
+    torch.cuda.empty_cache()
+
     # # Flamingo model evaluations
     # # spatial_commonsense benchmark
     # model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     gc.collect()
     torch.cuda.empty_cache()
 
-    # VL-commonsense color benchmark
+    # VL-commonsense wiki color benchmark
     model_evaluator = FlamingoVLCommonsenseWikiColorEvaluator()
     evaluation_results = model_evaluator.evaluate()
     print(f"Flamingo::Accuracy on VL-commonsense wiki color:")
@@ -206,7 +206,7 @@ if __name__ == "__main__":
     gc.collect()
     torch.cuda.empty_cache()
 
-    # VL-commonsense material benchmark
+    # VL-commonsense wiki material benchmark
     model_evaluator = FlamingoVLCommonsenseWikiMaterialEvaluator()
     evaluation_results = model_evaluator.evaluate()
     print(f"Flamingo::Accuracy on VL-commonsense wiki material:")
