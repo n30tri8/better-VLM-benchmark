@@ -18,34 +18,34 @@ from model_evaluation.GPT2_evaluator import GPT2VLCommonsenseShapeEvaluator, GPT
     GPT2EvaluatorOnHeightCommonsense, GPT2EvaluatorOnSizeCommonsense, GPT2EvaluatorOnPosrelCommonsense
 
 if __name__ == "__main__":
-    # GPT2 model evaluations
-    # spatial_commonsense benchmark
-    model_evaluator = GPT2EvaluatorOnHeightCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on height commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    model_evaluator = GPT2EvaluatorOnSizeCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on size commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    model_evaluator = GPT2EvaluatorOnPosrelCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"GPT2::Accuracy on posrel commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    # # GPT2 model evaluations
+    # # spatial_commonsense benchmark
+    # model_evaluator = GPT2EvaluatorOnHeightCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on height commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # model_evaluator = GPT2EvaluatorOnSizeCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on size commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # model_evaluator = GPT2EvaluatorOnPosrelCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"GPT2::Accuracy on posrel commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     # VL-commonsense benchmark
     model_evaluator = GPT2VLCommonsenseShapeEvaluator()
@@ -129,32 +129,32 @@ if __name__ == "__main__":
 
     # Flamingo model evaluations
     # spatial_commonsense benchmark
-    model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on height commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on size commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    model_evaluator = FlamingoEvaluatorOnPosrelCommonsense()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"Flamingo::Accuracy on posrel commonsense:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    # model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on height commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on size commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # model_evaluator = FlamingoEvaluatorOnPosrelCommonsense()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"Flamingo::Accuracy on posrel commonsense:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
 
     # VL-commonsense benchmark
     # VL-commonsense color benchmark
