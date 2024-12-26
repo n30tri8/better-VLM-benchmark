@@ -7,9 +7,9 @@ from open_flamingo import create_model_and_transforms
 from torch.utils.data import DataLoader
 
 from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
-    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
-    ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
-    WikiColorVLCommonsenseBenchmark
+    SpatialCommonsensePosrelBenchmark, WikiColorVLCommonsenseTestBenchmark, WikiMaterialVLCommonsenseTestBenchmark, \
+    WikiShapeVLCommonsenseTestBenchmark, ColorVLCommonsenseTestBenchmark, MaterialVLCommonsenseTestBenchmark, \
+    ShapeVLCommonsenseTestBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -258,41 +258,41 @@ class FlamingoVLCommonsenseEvaluator(FlamingoEvaluator):
 
 class FlamingoVLCommonsenseShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ShapeVLCommonsenseBenchmark()
+        benchmark = ShapeVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = MaterialVLCommonsenseBenchmark()
+        benchmark = MaterialVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ColorVLCommonsenseBenchmark()
+        benchmark = ColorVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/color-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiShapeEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiShapeVLCommonsenseBenchmark()
+        benchmark = WikiShapeVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiMaterialEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiMaterialVLCommonsenseBenchmark()
+        benchmark = WikiMaterialVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class FlamingoVLCommonsenseWikiColorEvaluator(FlamingoVLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiColorVLCommonsenseBenchmark()
+        benchmark = WikiColorVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-color-prompt-template.txt')
         super().__init__(benchmark, prompt)

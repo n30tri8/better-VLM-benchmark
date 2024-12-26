@@ -4,9 +4,11 @@ from torch.utils.data import DataLoader
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 from benckmarks.benchmark import SpatialCommonsenseHeightBenchmark, SpatialCommonsenseSizeBenchmark, \
-    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
-    ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
-    WikiColorVLCommonsenseBenchmark
+    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseTestBenchmark, \
+    MaterialVLCommonsenseTestBenchmark, \
+    ColorVLCommonsenseTestBenchmark, WikiShapeVLCommonsenseTestBenchmark, WikiMaterialVLCommonsenseTestBenchmark, \
+    WikiColorVLCommonsenseTestBenchmark, SizeSmallerVLCommonsenseTestBenchmark, \
+    SizeLargerVLCommonsenseTestBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -226,49 +228,49 @@ class GPT2VLCommonsenseEvaluator(GPT2Evaluator):
 
 class GPT2VLCommonsenseShapeEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ShapeVLCommonsenseBenchmark()
+        benchmark = ShapeVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseMaterialEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = MaterialVLCommonsenseBenchmark()
+        benchmark = MaterialVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseColorEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ColorVLCommonsenseBenchmark()
+        benchmark = ColorVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/color-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseWikiShapeEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiShapeVLCommonsenseBenchmark()
+        benchmark = WikiShapeVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-shape-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseWikiMaterialEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiMaterialVLCommonsenseBenchmark()
+        benchmark = WikiMaterialVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-material-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseWikiColorEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = WikiColorVLCommonsenseBenchmark()
+        benchmark = WikiColorVLCommonsenseTestBenchmark()
         prompt = self.load_prompt_template('./VL-commonsense_preprocessed/wiki-color-prompt-template.txt')
         super().__init__(benchmark, prompt)
 
 
 class GPT2VLCommonsenseSizeLargerEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ColorVLCommonsenseBenchmark()
+        benchmark = SizeLargerVLCommonsenseTestBenchmark()
         prompt = "Answer this question with yes or no: Is {subject} larger than {object}?\nAnswer:"
         super().__init__(benchmark, prompt)
 
@@ -321,7 +323,7 @@ class GPT2VLCommonsenseSizeLargerEvaluator(GPT2VLCommonsenseEvaluator):
 
 class GPT2VLCommonsenseSizeSmallerEvaluator(GPT2VLCommonsenseEvaluator):
     def __init__(self):
-        benchmark = ColorVLCommonsenseBenchmark()
+        benchmark = SizeSmallerVLCommonsenseTestBenchmark()
         prompt = "Answer this question with yes or no: Is {subject} smaller than {object}?\nAnswer:"
         super().__init__(benchmark, prompt)
 
@@ -370,4 +372,3 @@ class GPT2VLCommonsenseSizeSmallerEvaluator(GPT2VLCommonsenseEvaluator):
         self.write_log()
 
         return self.benchmark_log
-

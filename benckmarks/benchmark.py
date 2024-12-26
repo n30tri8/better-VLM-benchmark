@@ -78,7 +78,7 @@ class ShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class ShapeVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/shape/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/shape/single/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -91,7 +91,7 @@ class MaterialVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class MaterialVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/material/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/material/single/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -104,7 +104,7 @@ class ColorVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class ColorVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/color/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/color/single/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -116,7 +116,7 @@ class SizeLargerVLCommonsenseBenchmark(BenchmarkDataset):
 
 class SizeLargerVLCommonsenseTestBenchmark(BenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/size_larger/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/size_larger/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -128,7 +128,7 @@ class SizeSmallerVLCommonsenseBenchmark(BenchmarkDataset):
 
 class SizeSmallerVLCommonsenseTestBenchmark(BenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/size_smaller/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/size_smaller/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -141,7 +141,7 @@ class WikiShapeVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class WikiShapeVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-shape/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-shape/single/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -155,7 +155,7 @@ class WikiMaterialVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 class WikiMaterialVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
         distribution_file = os.path.join(PROJECT_ROOT,
-                                         'VL-commonsense/mine-data/db/wiki-material/single/color.txt.jsonl')
+                                         'VL-commonsense/mine-data/db/wiki-material/single/test.jsonl')
         super().__init__(distribution_file)
 
 
@@ -168,7 +168,7 @@ class WikiColorVLCommonsenseBenchmark(VLCommonsenseBenchmarkDataset):
 
 class WikiColorVLCommonsenseTestBenchmark(VLCommonsenseBenchmarkDataset):
     def __init__(self):
-        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-color/single/color.txt.jsonl')
+        distribution_file = os.path.join(PROJECT_ROOT, 'VL-commonsense/mine-data/db/wiki-color/single/test.jsonl')
         super().__init__(distribution_file)
 
 

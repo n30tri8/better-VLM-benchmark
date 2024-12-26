@@ -2,13 +2,10 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from sklearn.linear_model import LogisticRegression
-from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, CLIPTextModel
 
 from benckmarks.benchmark import SpatialCommonsenseSizeBenchmark, \
-    SpatialCommonsensePosrelBenchmark, ShapeVLCommonsenseBenchmark, MaterialVLCommonsenseBenchmark, \
-    ColorVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiMaterialVLCommonsenseBenchmark, \
-    WikiColorVLCommonsenseBenchmark, ShapeVLCommonsenseTestBenchmark, ColorVLCommonsenseTestBenchmark, \
+    ShapeVLCommonsenseTestBenchmark, ColorVLCommonsenseTestBenchmark, \
     MaterialVLCommonsenseTestBenchmark, WikiShapeVLCommonsenseTestBenchmark, WikiMaterialVLCommonsenseTestBenchmark, \
     WikiColorVLCommonsenseTestBenchmark, SizeLargerVLCommonsenseBenchmark, SizeLargerVLCommonsenseTestBenchmark, \
     SizeSmallerVLCommonsenseBenchmark, SizeSmallerVLCommonsenseTestBenchmark, SpatialCommonsenseHeightBenchmark, \
@@ -259,4 +256,3 @@ class CLIPVLCommonsenseSizeLargerEvaluator(CLIPVLCommonsenseEvaluator):
                                  "[obj] can be smaller than {subject} ."
                                  "{subject} is bigger than [obj] ."
                                  "[obj] is not as big as {subject} ."]
-
