@@ -77,12 +77,16 @@ By following these steps, you will set up the environment required to run the pr
 - [ ] Debug and investigate low accuracy issues
   - Compare current results with accuracies reported in the original pape
   - Identify potential discrepancies in implementation
+  - [ ] accuracy of CLIP model on VL-commonsense
 - [ ] implement soft-prompt
 - [x] usage of train data before test data
 - [ ] refactoring
   - [ ] evaluate function; a lot of repeated code
   - [ ] create model in a factory pattern: instead of a fresh initialization every time, and freeze the model
 - [ ] Complete benchmark runs and generate final report
+  - [x] results of CLIP are not complete
+  - [ ] results of Flamingo need manual calculation
+  - [ ] better grouping and illustration of results
 - [ ] accurate equivalent benchmarking.
   - [ ] GPT2\Flamingo size_smaller\larger is not using training data, but CLIP is using training data.
   - [x] CLIP is using all training data compared to GPT2 using a subset of training data

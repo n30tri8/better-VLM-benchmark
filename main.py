@@ -332,22 +332,22 @@ if __name__ == "__main__":
     gc.collect()
     torch.cuda.empty_cache()
 
-    # VL-commonsense size smaller benchmark
-    model_evaluator = CLIPVLCommonsenseSizeSmallerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense size smaller:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    # VL-commonsense size larger benchmark
-    model_evaluator = CLIPVLCommonsenseSizeLargerEvaluator()
-    evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense size larger:")
-    print(evaluation_results)
-
-    del model_evaluator
-    gc.collect()
-    torch.cuda.empty_cache()
+    # # VL-commonsense size smaller benchmark
+    # model_evaluator = CLIPVLCommonsenseSizeSmallerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"CLIP::Accuracy on VL-commonsense size smaller:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()
+    #
+    # # VL-commonsense size larger benchmark
+    # model_evaluator = CLIPVLCommonsenseSizeLargerEvaluator()
+    # evaluation_results = model_evaluator.evaluate()
+    # print(f"CLIP::Accuracy on VL-commonsense size larger:")
+    # print(evaluation_results)
+    #
+    # del model_evaluator
+    # gc.collect()
+    # torch.cuda.empty_cache()

@@ -145,6 +145,8 @@ class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
             acc_all_temps.append(accuracy)
 
         self.benchmark_log["best_acc"] = round(np.max(acc_all_temps), 2)
+        self.write_log()
+
         return self.benchmark_log
 
 
