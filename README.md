@@ -83,10 +83,11 @@ By following these steps, you will set up the environment required to run the pr
 - [ ] refactoring
   - [ ] evaluate function; a lot of repeated code
   - [ ] create model in a factory pattern: instead of a fresh initialization every time, and freeze the model
-- [ ] Complete benchmark runs and generate final report
+- [x] Complete benchmark runs and generate final report
   - [x] results of CLIP are not complete
-  - [ ] results of Flamingo need manual calculation
-  - [ ] better grouping and illustration of results
+  - [x] running CLIP on complete dataset
+  - [x] results of Flamingo need manual calculation
+  - [x] better grouping and illustration of results
 - [ ] accurate equivalent benchmarking.
   - [ ] GPT2\Flamingo size_smaller\larger is not using training data, but CLIP is using training data.
   - [x] CLIP is using all training data compared to GPT2 using a subset of training data
