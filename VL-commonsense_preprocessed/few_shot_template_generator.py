@@ -15,7 +15,7 @@ def create_output_files(dataset_type, target_distribution, input_train_dataset, 
             grouped_data[entry['obj']].append(entry)
 
     selected_entries = []
-    # Randomly select 1-3 samples for each color
+    # Randomly select 3 samples for each color
     for label, entries in grouped_data.items():
         if len(entries) >= 3:
             selected = random.sample(entries, 3)

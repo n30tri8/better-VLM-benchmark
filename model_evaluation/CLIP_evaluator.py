@@ -11,7 +11,9 @@ from benckmarks.benchmark import SpatialCommonsenseSizeBenchmark, \
     SizeSmallerVLCommonsenseBenchmark, SizeSmallerVLCommonsenseTestBenchmark, SpatialCommonsenseHeightBenchmark, \
     ShapeVLCommonsenseSelectBenchmark, WikiShapeVLCommonsenseSelectBenchmark, ColorVLCommonsenseSelectBenchmark, \
     WikiColorVLCommonsenseSelectBenchmark, MaterialVLCommonsenseSelectBenchmark, \
-    WikiMaterialVLCommonsenseSelectBenchmark
+    WikiMaterialVLCommonsenseSelectBenchmark, ShapeVLCommonsenseBenchmark, ColorVLCommonsenseBenchmark, \
+    MaterialVLCommonsenseBenchmark, WikiShapeVLCommonsenseBenchmark, WikiColorVLCommonsenseBenchmark, \
+    WikiMaterialVLCommonsenseBenchmark
 from .model_evaluator import ModelEvaluator
 
 
@@ -135,13 +137,13 @@ class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
             test_labels = test_all_temps[i][1]
 
             # Perform logistic regression
-            classifier = LogisticRegression(random_state=0, penalty='l1', C=0.0001, max_iter=500, solver='saga',
+            classifier = LogisticRegression(random_state=0, penalty='l1', C=0.0001, max_iter=2000, solver='saga',
                                             verbose=0)
             classifier.fit(train_features, train_labels)
 
             # Evaluate using the logistic regression classifier
             predictions = classifier.predict(test_features)
-            accuracy = np.mean((test_labels == predictions).astype(float)) * 100.
+            accuracy = np.mean((test_labels == predictions).astype(float))
             acc_all_temps.append(accuracy)
 
         self.benchmark_log["best_acc"] = round(np.max(acc_all_temps), 2)
@@ -152,7 +154,8 @@ class CLIPVLCommonsenseEvaluator(CLIPEvaluator):
 
 class CLIPVLCommonsenseShapeEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = ShapeVLCommonsenseSelectBenchmark()
+        # train_dataset = ShapeVLCommonsenseSelectBenchmark()
+        train_dataset = ShapeVLCommonsenseBenchmark()
         test_dataset = ShapeVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} can be of shape [obj] .",
@@ -166,7 +169,8 @@ class CLIPVLCommonsenseShapeEvaluator(CLIPVLCommonsenseEvaluator):
 
 class CLIPVLCommonsenseWikiShapeEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = WikiShapeVLCommonsenseSelectBenchmark()
+        # train_dataset = WikiShapeVLCommonsenseSelectBenchmark()
+        train_dataset = WikiShapeVLCommonsenseBenchmark()
         test_dataset = WikiShapeVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} can be of shape [obj] .",
@@ -180,7 +184,8 @@ class CLIPVLCommonsenseWikiShapeEvaluator(CLIPVLCommonsenseEvaluator):
 
 class CLIPVLCommonsenseColorEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = ColorVLCommonsenseSelectBenchmark()
+        # train_dataset = ColorVLCommonsenseSelectBenchmark()
+        train_dataset = ColorVLCommonsenseBenchmark()
         test_dataset = ColorVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} can be of color [obj] .", "{subject} has color [obj] .",
@@ -190,7 +195,8 @@ class CLIPVLCommonsenseColorEvaluator(CLIPVLCommonsenseEvaluator):
 
 class CLIPVLCommonsenseWikiColorEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = WikiColorVLCommonsenseSelectBenchmark()
+        # train_dataset = WikiColorVLCommonsenseSelectBenchmark()
+        train_dataset = WikiColorVLCommonsenseBenchmark()
         test_dataset = WikiColorVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} can be of color [obj] .",
@@ -204,7 +210,8 @@ class CLIPVLCommonsenseWikiColorEvaluator(CLIPVLCommonsenseEvaluator):
 
 class CLIPVLCommonsenseMaterialEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = MaterialVLCommonsenseSelectBenchmark()
+        # train_dataset = MaterialVLCommonsenseSelectBenchmark()
+        train_dataset = MaterialVLCommonsenseBenchmark()
         test_dataset = MaterialVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} is made of [obj] .",
@@ -218,7 +225,8 @@ class CLIPVLCommonsenseMaterialEvaluator(CLIPVLCommonsenseEvaluator):
 
 class CLIPVLCommonsenseWikiMaterialEvaluator(CLIPVLCommonsenseEvaluator):
     def __init__(self):
-        train_dataset = WikiMaterialVLCommonsenseSelectBenchmark()
+        # train_dataset = WikiMaterialVLCommonsenseSelectBenchmark()
+        train_dataset = WikiMaterialVLCommonsenseBenchmark()
         test_dataset = WikiMaterialVLCommonsenseTestBenchmark()
         super().__init__(train_dataset, test_dataset)
         self.prompt_templates = ["{subject} is made of [obj] .",

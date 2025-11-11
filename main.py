@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # # spatial_commonsense benchmark
     # model_evaluator = GPT2EvaluatorOnHeightCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on height commonsense:")
+    # print("GPT2::Accuracy on height commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     #
     # model_evaluator = GPT2EvaluatorOnSizeCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on size commonsense:")
+    # print("GPT2::Accuracy on size commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     #
     # model_evaluator = GPT2EvaluatorOnPosrelCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on posrel commonsense:")
+    # print("GPT2::Accuracy on posrel commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # # VL-commonsense benchmark
     # model_evaluator = GPT2VLCommonsenseShapeEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense shape:")
+    # print("GPT2::Accuracy on VL-commonsense shape:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # # VL-commonsense color benchmark
     # model_evaluator = GPT2VLCommonsenseColorEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense color:")
+    # print("GPT2::Accuracy on VL-commonsense color:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # # VL-commonsense material benchmark
     # model_evaluator = GPT2VLCommonsenseMaterialEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense material:")
+    # print("GPT2::Accuracy on VL-commonsense material:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki shape benchmark
     # model_evaluator = GPT2VLCommonsenseWikiShapeEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense wiki shape:")
+    # print("GPT2::Accuracy on VL-commonsense wiki shape:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki color benchmark
     # model_evaluator = GPT2VLCommonsenseWikiColorEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense wiki color:")
+    # print("GPT2::Accuracy on VL-commonsense wiki color:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki material benchmark
     # model_evaluator = GPT2VLCommonsenseWikiMaterialEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense wiki material:")
+    # print("GPT2::Accuracy on VL-commonsense wiki material:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     # # VL-commonsense size larger benchmark
     # model_evaluator = GPT2VLCommonsenseSizeLargerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense size larger:")
+    # print("GPT2::Accuracy on VL-commonsense size larger:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     # # VL-commonsense size smaller benchmark
     # model_evaluator = GPT2VLCommonsenseSizeSmallerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GPT2::Accuracy on VL-commonsense size smaller:")
+    # print("GPT2::Accuracy on VL-commonsense size smaller:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     # spatial_commonsense benchmark
     # model_evaluator = FlamingoEvaluatorOnHeightCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on height commonsense:")
+    # print("Flamingo::Accuracy on height commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -140,7 +140,7 @@ if __name__ == "__main__":
     #
     # model_evaluator = FlamingoEvaluatorOnSizeCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on size commonsense:")
+    # print("Flamingo::Accuracy on size commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     #
     # model_evaluator = FlamingoEvaluatorOnPosrelCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on posrel commonsense:")
+    # print("Flamingo::Accuracy on posrel commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     # # VL-commonsense color benchmark
     # model_evaluator = FlamingoVLCommonsenseColorEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense color:")
+    # print("Flamingo::Accuracy on VL-commonsense color:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     # # VL-commonsense shape benchmark
     # model_evaluator = FlamingoVLCommonsenseShapeEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense shape:")
+    # print("Flamingo::Accuracy on VL-commonsense shape:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     # # VL-commonsense material benchmark
     # model_evaluator = FlamingoVLCommonsenseMaterialEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense material:")
+    # print("Flamingo::Accuracy on VL-commonsense material:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki shape benchmark
     # model_evaluator = FlamingoVLCommonsenseWikiShapeEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense wiki shape:")
+    # print("Flamingo::Accuracy on VL-commonsense wiki shape:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -200,7 +200,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki color benchmark
     # model_evaluator = FlamingoVLCommonsenseWikiColorEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense wiki color:")
+    # print("Flamingo::Accuracy on VL-commonsense wiki color:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     # # VL-commonsense wiki material benchmark
     # model_evaluator = FlamingoVLCommonsenseWikiMaterialEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense wiki material:")
+    # print("Flamingo::Accuracy on VL-commonsense wiki material:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -220,7 +220,7 @@ if __name__ == "__main__":
     # # VL-commonsense size larger benchmark
     # model_evaluator = FlamingoVLCommonsenseSizeLargerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense size larger:")
+    # print("Flamingo::Accuracy on VL-commonsense size larger:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -230,7 +230,7 @@ if __name__ == "__main__":
     # # VL-commonsense size smaller benchmark
     # model_evaluator = FlamingoVLCommonsenseSizeSmallerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"Flamingo::Accuracy on VL-commonsense size smaller:")
+    # print("Flamingo::Accuracy on VL-commonsense size smaller:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -241,7 +241,7 @@ if __name__ == "__main__":
     # # spatial_commonsense benchmark
     # model_evaluator = GITEvaluatorOnHeightCommonsense()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"GIT::Accuracy on height commonsense:")
+    # print("GIT::Accuracy on height commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -255,7 +255,7 @@ if __name__ == "__main__":
     # # spatial_commonsense size benchmark
     # model_evaluator = CLIPSpatialCommonsenseSizeEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"CLIP::Accuracy on size commonsense:")
+    # print("CLIP::Accuracy on size commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -265,17 +265,17 @@ if __name__ == "__main__":
     # # spatial_commonsense height benchmark
     # model_evaluator = CLIPSpatialCommonsenseHeightEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"CLIP::Accuracy on height commonsense:")
+    # print("CLIP::Accuracy on height commonsense:")
     # print(evaluation_results)
     #
     # del model_evaluator
     # gc.collect()
     # torch.cuda.empty_cache()
-
+    #
     # VL-commonsense shape benchmark
     model_evaluator = CLIPVLCommonsenseShapeEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense shape:")
+    print("CLIP::Accuracy on VL-commonsense shape:")
     print(evaluation_results)
 
     del model_evaluator
@@ -285,7 +285,7 @@ if __name__ == "__main__":
     # VL-commonsense color benchmark
     model_evaluator = CLIPVLCommonsenseColorEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense color:")
+    print("CLIP::Accuracy on VL-commonsense color:")
     print(evaluation_results)
 
     del model_evaluator
@@ -295,7 +295,7 @@ if __name__ == "__main__":
     # VL-commonsense material benchmark
     model_evaluator = CLIPVLCommonsenseMaterialEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense material:")
+    print("CLIP::Accuracy on VL-commonsense material:")
     print(evaluation_results)
 
     del model_evaluator
@@ -305,7 +305,7 @@ if __name__ == "__main__":
     # VL-commonsense wiki shape benchmark
     model_evaluator = CLIPVLCommonsenseWikiShapeEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense wiki shape:")
+    print("CLIP::Accuracy on VL-commonsense wiki shape:")
     print(evaluation_results)
 
     del model_evaluator
@@ -315,7 +315,7 @@ if __name__ == "__main__":
     # VL-commonsense wiki color benchmark
     model_evaluator = CLIPVLCommonsenseWikiColorEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense wiki color:")
+    print("CLIP::Accuracy on VL-commonsense wiki color:")
     print(evaluation_results)
 
     del model_evaluator
@@ -325,17 +325,17 @@ if __name__ == "__main__":
     # VL-commonsense wiki material benchmark
     model_evaluator = CLIPVLCommonsenseWikiMaterialEvaluator()
     evaluation_results = model_evaluator.evaluate()
-    print(f"CLIP::Accuracy on VL-commonsense wiki material:")
+    print("CLIP::Accuracy on VL-commonsense wiki material:")
     print(evaluation_results)
 
     del model_evaluator
     gc.collect()
     torch.cuda.empty_cache()
-
+    #
     # # VL-commonsense size smaller benchmark
     # model_evaluator = CLIPVLCommonsenseSizeSmallerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"CLIP::Accuracy on VL-commonsense size smaller:")
+    # print("CLIP::Accuracy on VL-commonsense size smaller:")
     # print(evaluation_results)
     #
     # del model_evaluator
@@ -345,7 +345,7 @@ if __name__ == "__main__":
     # # VL-commonsense size larger benchmark
     # model_evaluator = CLIPVLCommonsenseSizeLargerEvaluator()
     # evaluation_results = model_evaluator.evaluate()
-    # print(f"CLIP::Accuracy on VL-commonsense size larger:")
+    # print("CLIP::Accuracy on VL-commonsense size larger:")
     # print(evaluation_results)
     #
     # del model_evaluator
